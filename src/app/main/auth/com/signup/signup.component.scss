@@ -1,0 +1,68 @@
+@import "src/@fuse/scss/fuse";
+
+#register {
+    width: 100%;
+    background-color: #333;
+    // background: url("/assets/images/backgrounds/dark-material-bg.jpg")
+    // no-repeat;
+    // background-size: cover;
+
+    #register-form-wrapper {
+        flex: 1 0 auto;
+        @include media-breakpoint("xs") {
+            padding: 16px;
+        }
+
+        #register-form {
+            width: 384px;
+            max-width: 384px;
+            text-align: center;
+            background: white !important;
+            @include mat-elevation(16);
+
+            @include media-breakpoint("xs") {
+                padding: 24px;
+                width: 100%;
+            }
+
+            #header {
+                background: linear-gradient(
+                    to bottom,
+                    rgba(111, 42, 189, 1) 0%,
+                    rgba(88, 43, 193, 1) 99%
+                );
+                padding-top: 10px;
+            }
+
+            form {
+                width: 100%;
+                text-align: left;
+                padding: 32px;
+                padding-bottom: 0px;
+                mat-form-field {
+                    width: 100%;
+                }
+                .submit-button {
+                    width: 220px;
+                    margin: 16px auto;
+                    display: block;
+                    background-color: #7f55d9;
+                    color: white;
+
+                    @include media-breakpoint("xs") {
+                        width: 90%;
+                    }
+                }
+            }
+        }
+
+        .register {
+            margin: 32px auto 24px auto;
+            font-weight: 600;
+
+            .text {
+                margin-right: 8px;
+            }
+        }
+    }
+}

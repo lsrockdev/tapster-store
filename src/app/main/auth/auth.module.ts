@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
-import { LoginComponent } from "./login/login.component";
+import { LoginComponent } from "./com/login/login.component";
 import {
     MatButtonModule,
     MatCheckboxModule,
@@ -12,16 +12,21 @@ import {
 } from "@angular/material";
 import { FuseSharedModule } from "@fuse/shared.module";
 import { AuthService } from "./service/auth.service";
+import { SignupComponent } from "./com/signup/signup.component";
 
 const routes = [
     {
         path: "login",
         component: LoginComponent
+    },
+    {
+        path: "register",
+        component: SignupComponent
     }
 ];
 
 @NgModule({
-    declarations: [LoginComponent],
+    declarations: [LoginComponent, SignupComponent],
     imports: [
         RouterModule.forChild(routes),
         MatButtonModule,

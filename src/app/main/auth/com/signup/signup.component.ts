@@ -9,19 +9,16 @@ import {
 import { Subject, of } from "rxjs";
 import { Router } from "@angular/router";
 import { FuseConfigService } from "@fuse/services/config.service";
-import { fuseAnimations } from "@fuse/animations";
-import { AuthService } from "../service/auth.service";
+import { AuthService } from "../../service/auth.service";
 import { Admin } from "app/model";
 
 @Component({
-    selector: "login",
-    templateUrl: "./login.component.html",
-    styleUrls: ["./login.component.scss"],
-    encapsulation: ViewEncapsulation.None,
-    animations: fuseAnimations
+    selector: "register",
+    templateUrl: "./signup.component.html",
+    styleUrls: ["./signup.component.scss"]
 })
-export class LoginComponent implements OnInit, OnDestroy {
-    loginForm: FormGroup;
+export class SignupComponent implements OnInit {
+    registerForm: FormGroup;
     // Private
     private _unsubscribeAll: Subject<any>;
 
@@ -56,9 +53,16 @@ export class LoginComponent implements OnInit, OnDestroy {
         };
 
         this._unsubscribeAll = new Subject();
-        this.loginForm = this._formBuilder.group({
+        this.registerForm = this._formBuilder.group({
             email: ["", [Validators.required, Validators.email]],
-            password: ["", Validators.required]
+            password: ["", Validators.required],
+            confirmPassword: ["", Validators.required],
+            name: ["", Validators.required],
+            code: ["", Validators.required],
+            address: ["", Validators.required],
+            phone: ["", Validators.required],
+            city: ["", Validators.required],
+            zipCode: ["", Validators.required]
         });
     }
 
@@ -71,9 +75,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     submit(e: Event): void {
         e.preventDefault();
-        if (this.loginForm.valid) {
+        if (this.registerForm.valid) {
             this.loading = true;
-            const data = this.loginForm.value;
+            const data = this.registerForm.value;
             this.authService
                 .login(data.email, data.password)
                 .then(

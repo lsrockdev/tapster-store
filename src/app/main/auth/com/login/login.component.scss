@@ -39,7 +39,7 @@ login {
                     width: 100%;
                     text-align: left;
                     padding: 32px;
-
+                    padding-bottom: 0px;
                     mat-form-field {
                         width: 100%;
                     }
@@ -54,6 +54,15 @@ login {
                             width: 90%;
                         }
                     }
+                }
+            }
+
+            .register {
+                margin: 32px auto 24px auto;
+                font-weight: 600;
+
+                .text {
+                    margin-right: 8px;
                 }
             }
         }
