@@ -1,0 +1,21 @@
+<mat-toolbar class="p-0 mat-elevation-z1">
+    <div fxFlex fxFill fxLayout="row" fxLayoutAlign="start center">
+        <div
+            fxFlex="1 0 auto"
+            fxLayout="row"
+            fxLayoutAlign="start center"
+        ></div>
+
+        <div
+            class=""
+            fxFlex="0 1 auto"
+            fxLayout="row"
+            fxLayoutAlign="start center"
+        >
+            <button mat-button (click)="logout($event)">
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Logout</span>
+            </button>
+        </div>
+    </div>
+</mat-toolbar>

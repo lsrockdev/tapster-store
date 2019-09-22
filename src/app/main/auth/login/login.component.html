@@ -1,0 +1,80 @@
+<div id="login" fxLayout="column">
+    <div
+        id="login-form-wrapper"
+        fxLayout="column"
+        fxLayoutAlign="center center"
+    >
+        <div
+            id="login-form"
+            [@animate]="{
+                value: '*',
+                params: { duration: '300ms', y: '100px' }
+            }"
+        >
+            <div id="header" class="text-center">
+                <img src="assets/images/logos/tapsterKO.png" alt="logo" />
+            </div>
+
+            <form
+                name="loginForm"
+                [formGroup]="loginForm"
+                (submit)="submit($event)"
+                novalidate
+            >
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" />
+                    <mat-icon matSuffix class="secondary-text">mail</mat-icon>
+                    <mat-error
+                        *ngIf="loginForm.get('email').hasError('required')"
+                    >
+                        Email is required
+                    </mat-error>
+                    <mat-error
+                        *ngIf="
+                            !loginForm.get('email').hasError('required') &&
+                            loginForm.get('email').hasError('email')
+                        "
+                    >
+                        Please enter a valid email address
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input
+                        matInput
+                        type="password"
+                        formControlName="password"
+                    />
+                    <mat-icon matSuffix class="secondary-text"
+                        >vpn_key</mat-icon
+                    >
+                    <mat-error>
+                        Password is required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-error *ngIf="errorMessage">
+                    {{ errorMessage }}
+                </mat-error>
+
+                <button
+                    mat-raised-button
+                    class="submit-button"
+                    aria-label="LOG IN"
+                    [disabled]="loading"
+                >
+                    LOGIN
+                </button>
+            </form>
+        </div>
+        <div
+            fxLayout="column"
+            style="margin-top:20px; color:white"
+            fxLayoutAlign="center center"
+        >
+            © 2019 Tapster, Inc. All Rights Reserved.
+        </div>
+    </div>
+</div>

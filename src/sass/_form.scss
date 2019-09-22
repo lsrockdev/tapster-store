@@ -1,0 +1,43 @@
+@import "src/@fuse/scss/fuse";
+
+.form-edit-dialog {
+    @include media-breakpoint("xs") {
+        width: 100%;
+    }
+
+    @include media-breakpoint("gt-xs") {
+        width: 640px;
+    }
+
+    .mat-dialog-container {
+        padding: 0;
+
+        .edit-form {
+            .mat-form-field {
+                width: 100%;
+            }
+
+            .browser_container {
+                margin-top: 100px;
+                .small-button {
+                    height: 20px !important;
+                    width: 20px !important;
+                    font-size: 10px !important;
+                    line-height: 0px;
+                }
+            }
+
+            .show-hide-extra-fields {
+                text-align: right;
+                cursor: pointer;
+                font-size: 12px;
+            }
+        }
+    }
+
+    .dialog-content-wrapper {
+        max-height: 85vh;
+        display: flex;
+        flex-direction: column;
+    }
+}
