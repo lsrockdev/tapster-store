@@ -58,7 +58,7 @@ export class SignupComponent implements OnInit {
             password: ["", Validators.required],
             confirmPassword: ["", Validators.required],
             name: ["", Validators.required],
-            code: ["", Validators.required],
+            uid: ["", Validators.required],
             address: ["", Validators.required],
             phone: ["", Validators.required],
             city: ["", Validators.required],
@@ -76,23 +76,24 @@ export class SignupComponent implements OnInit {
     submit(e: Event): void {
         e.preventDefault();
         if (this.registerForm.valid) {
-            this.loading = true;
-            const data = this.registerForm.value;
-            this.authService
-                .signUp(data)
-                .then(
-                    res => (
-                        (this.loading = false),
-                        res ? this.initUser(res) : of(null)
-                    )
-                )
-                .catch(
-                    error => (
-                        console.log(error),
-                        (this.loading = false),
-                        (this.errorMessage = error)
-                    )
-                );
+            console.log(this.registerForm.value);
+            // this.loading = true;
+            // const data = this.registerForm.value;
+            // this.authService
+            //     .signUp(data)
+            //     .then(
+            //         res => (
+            //             (this.loading = false),
+            //             res ? this.initUser(res) : of(null)
+            //         )
+            //     )
+            //     .catch(
+            //         error => (
+            //             console.log(error),
+            //             (this.loading = false),
+            //             (this.errorMessage = error)
+            //         )
+            //     );
         }
     }
 

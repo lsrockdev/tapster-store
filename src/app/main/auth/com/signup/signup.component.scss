@@ -14,8 +14,8 @@
         }
 
         #register-form {
-            // width: 700px;
-            // max-width: 700px;
+            width: 780px;
+            max-width: 780px;
             text-align: center;
             background: white !important;
             @include mat-elevation(16);
@@ -40,7 +40,8 @@
                 padding: 32px;
                 padding-bottom: 0px;
                 mat-form-field {
-                    width: 100%;
+                    width: 50%;
+                    padding: 8px;
                 }
                 .submit-button {
                     width: 220px;
