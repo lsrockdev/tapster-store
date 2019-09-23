@@ -16,10 +16,10 @@ export const navigation: FuseNavigation[] = [
         url: "/inventory"
     },
     {
-        id: "products",
-        title: "Products",
+        id: "taps",
+        title: "Taps",
         type: "item",
         icon: "calendar",
-        url: "/products"
+        url: "/taps"
     }
 ];

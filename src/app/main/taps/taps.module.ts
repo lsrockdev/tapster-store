@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { ProductsComponent } from "./com/products.component";
+import { TapsComponent } from "./com/taps.component";
 import { RouterModule, Routes } from "@angular/router";
 import {
     MatButtonModule,
@@ -26,7 +26,7 @@ import { FuseWidgetModule } from "@fuse/components/widget/widget.module";
 const routes: Routes = [
     {
         path: "",
-        component: ProductsComponent
+        component: TapsComponent
         // resolve: {
         //     data: SizesService
         // }
@@ -34,7 +34,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [ProductsComponent],
+    declarations: [TapsComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
@@ -58,4 +58,4 @@ const routes: Routes = [
         FuseWidgetModule
     ]
 })
-export class ProductsModule {}
+export class TapsModule {}

@@ -41,9 +41,9 @@ const appRoutes: Routes = [
         loadChildren: "app/main/inventory/inventory.module#InventoryModule"
     },
     {
-        path: "products",
+        path: "taps",
         canActivate: [UserGuard],
-        loadChildren: "app/main/products/products.module#ProductsModule"
+        loadChildren: "app/main/taps/taps.module#TapsModule"
     },
     {
         path: "**",
