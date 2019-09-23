@@ -7,5 +7,12 @@ export const navigation: FuseNavigation[] = [
         type: "item",
         icon: "calendar",
         url: "/orders"
+    },
+    {
+        id: "inventory",
+        title: "Inventory",
+        type: "item",
+        icon: "calendar",
+        url: "/inventory"
     }
 ];

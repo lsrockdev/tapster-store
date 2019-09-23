@@ -36,6 +36,11 @@ const appRoutes: Routes = [
         loadChildren: "app/main/orders/orders.module#OrdersModule"
     },
     {
+        path: "inventory",
+        canActivate: [UserGuard],
+        loadChildren: "app/main/inventory/inventory.module#InventoryModule"
+    },
+    {
         path: "**",
         redirectTo: "login"
     }
