@@ -10,7 +10,7 @@ import { Subject, of } from "rxjs";
 import { Router } from "@angular/router";
 import { FuseConfigService } from "@fuse/services/config.service";
 import { AuthService } from "../../service/auth.service";
-import { User } from "app/model";
+import { User, CustomValidators } from "app/model";
 
 @Component({
     selector: "register",
@@ -56,7 +56,7 @@ export class SignupComponent implements OnInit {
         this.registerForm = this._formBuilder.group({
             email: ["", [Validators.required, Validators.email]],
             password: ["", Validators.required],
-            confirmPassword: ["", Validators.required],
+            // confirmPassword: ["", Validators.required],
             name: ["", Validators.required],
             uid: ["", Validators.required],
             address: ["", Validators.required],
@@ -77,23 +77,24 @@ export class SignupComponent implements OnInit {
         e.preventDefault();
         if (this.registerForm.valid) {
             console.log(this.registerForm.value);
-            // this.loading = true;
-            // const data = this.registerForm.value;
-            // this.authService
-            //     .signUp(data)
-            //     .then(
-            //         res => (
-            //             (this.loading = false),
-            //             res ? this.initUser(res) : of(null)
-            //         )
-            //     )
-            //     .catch(
-            //         error => (
-            //             console.log(error),
-            //             (this.loading = false),
-            //             (this.errorMessage = error)
-            //         )
-            //     );
+            this.loading = true;
+            const data = this.registerForm.value;
+            delete data.address;
+            this.authService
+                .signUp(data)
+                .then(
+                    res => (
+                        (this.loading = false),
+                        res ? this.initUser(res) : of(null)
+                    )
+                )
+                .catch(
+                    error => (
+                        console.log(error),
+                        (this.loading = false),
+                        (this.errorMessage = error)
+                    )
+                );
         }
     }
 

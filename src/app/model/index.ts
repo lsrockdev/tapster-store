@@ -29,7 +29,7 @@ export { select, Store, Action } from "@ngrx/store";
 export { Effect, Actions, ofType } from "@ngrx/effects";
 
 export { Size } from "./size";
-export { User } from "./User";
+export { User } from "./user";
 export { Category } from "./category";
 export { DeliveryFee } from "./delivery_fee";
 export { Product } from "./product";
@@ -40,5 +40,6 @@ export { Driver } from "./driver";
 export { Setting } from "./setting";
 export { OrderStatus } from "./order_status";
 export { Order } from "./order";
+export { CustomValidators } from "./util/custom.validators";
 
 export { Api } from "./api.config";
