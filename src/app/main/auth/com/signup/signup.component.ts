@@ -79,7 +79,7 @@ export class SignupComponent implements OnInit {
             this.loading = true;
             const data = this.registerForm.value;
             this.authService
-                .login(data.email, data.password)
+                .signUp(data)
                 .then(
                     res => (
                         (this.loading = false),

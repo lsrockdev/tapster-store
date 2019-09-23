@@ -30,12 +30,11 @@ import { EffectsModule } from "@ngrx/effects";
 import { AppEffects } from "./store/app.effects";
 
 const appRoutes: Routes = [
-    // {
-    //     path: "slot",
-    //     canActivate: [UserGuard],
-    //     loadChildren:
-    //         "app/main/slotmanagement/slotmanagement.module#SlotmanagementModule"
-    // },
+    {
+        path: "orders",
+        canActivate: [UserGuard],
+        loadChildren: "app/main/orders/orders.module#OrdersModule"
+    },
     {
         path: "**",
         redirectTo: "login"

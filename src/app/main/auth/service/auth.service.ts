@@ -12,4 +12,11 @@ export class AuthService {
             .pipe(take(1))
             .toPromise();
     }
+
+    public signUp(data: any): Promise<any> {
+        return this.bs
+            .publicPost(Api.auth.register, data)
+            .pipe(take(1))
+            .toPromise();
+    }
 }
