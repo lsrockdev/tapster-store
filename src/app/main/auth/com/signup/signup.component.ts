@@ -10,7 +10,7 @@ import { Subject, of } from "rxjs";
 import { Router } from "@angular/router";
 import { FuseConfigService } from "@fuse/services/config.service";
 import { AuthService } from "../../service/auth.service";
-import { Admin } from "app/model";
+import { User } from "app/model";
 
 @Component({
     selector: "register",
@@ -83,7 +83,7 @@ export class SignupComponent implements OnInit {
                 .then(
                     res => (
                         (this.loading = false),
-                        res ? this.initAdmin(res) : of(null)
+                        res ? this.initUser(res) : of(null)
                     )
                 )
                 .catch(
@@ -96,9 +96,9 @@ export class SignupComponent implements OnInit {
         }
     }
 
-    private initAdmin(res: any): void {
-        Admin.storeToken(res.token);
-        Admin.storeAdmin(res.user);
-        this.router.navigate(["/sizes"]);
+    private initUser(res: any): void {
+        User.storeToken(res.token);
+        User.storeUser(res.user);
+        this.router.navigate(["/orders"]);
     }
 }

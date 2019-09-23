@@ -5,14 +5,14 @@ import {
     RouterStateSnapshot,
     Router
 } from "@angular/router";
-import { Admin } from "../model";
+import { User } from "../model";
 
 @Injectable()
 export class UserGuard implements CanActivate {
     constructor(private router: Router) {}
 
     canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        return !!Admin.getStoredToken()
+        return !!User.getStoredToken()
             ? true
             : (this.router.navigate(["/login"]), false);
     }

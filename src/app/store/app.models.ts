@@ -1,4 +1,4 @@
-import { Admin } from "../model/admin";
+import { User } from "../model/User";
 export {
     throwError,
     Observable,
@@ -10,12 +10,12 @@ export {
     combineLatest,
     catchError,
     finalize,
-    Admin
+    User
 } from "../model";
 
 export enum AppFields {
     App = "app",
-    Admin = "User"
+    User = "User"
 }
 
 export enum AppTypes {
@@ -23,11 +23,11 @@ export enum AppTypes {
 }
 
 export interface AppState {
-    [AppFields.Admin]: Admin;
+    [AppFields.User]: User;
 }
 
 export const InitialState: AppState = {
-    [AppFields.Admin]: null
+    [AppFields.User]: null
 };
 
 export interface UpdateState {

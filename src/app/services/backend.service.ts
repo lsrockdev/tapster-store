@@ -6,7 +6,7 @@ import {
     throwError,
     catchError,
     finalize,
-    Admin
+    User
 } from "../store/app.models";
 import { Router } from "@angular/router";
 
@@ -19,7 +19,7 @@ export class BackendService {
         data: any = null,
         loading: string = api
     ): Observable<any> {
-        const token = Admin.getStoredToken();
+        const token = User.getStoredToken();
         const headers = new HttpHeaders()
             .set("Content-Type", "application/json")
             .set("authorization", "Bearer " + token);
@@ -46,7 +46,7 @@ export class BackendService {
         loading: string = api
     ): Observable<any> {
         this.onStart(loading);
-        const token = Admin.getStoredToken();
+        const token = User.getStoredToken();
         const headers = new HttpHeaders()
             .set("Content-Type", "application/json")
             .set("authorization", "Bearer " + token);
@@ -97,7 +97,7 @@ export class BackendService {
     }
 
     public logOut() {
-        Admin.removeAllItems();
+        User.removeAllItems();
         this.router.navigate(["/login"]);
     }
 

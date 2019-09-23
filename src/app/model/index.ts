@@ -29,7 +29,7 @@ export { select, Store, Action } from "@ngrx/store";
 export { Effect, Actions, ofType } from "@ngrx/effects";
 
 export { Size } from "./size";
-export { Admin } from "./admin";
+export { User } from "./User";
 export { Category } from "./category";
 export { DeliveryFee } from "./delivery_fee";
 export { Product } from "./product";

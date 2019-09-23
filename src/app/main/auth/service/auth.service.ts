@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Admin, Api, Observable, take } from "../../../model";
+import { User, Api, Observable, take } from "../../../model";
 import { BackendService } from "../../../services/backend.service";
 
 @Injectable()

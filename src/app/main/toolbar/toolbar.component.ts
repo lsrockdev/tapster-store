@@ -6,7 +6,7 @@ import * as _ from "lodash";
 
 import { FuseConfigService } from "@fuse/services/config.service";
 import { FuseSidebarService } from "@fuse/components/sidebar/sidebar.service";
-import { Admin } from "app/model";
+import { User } from "app/model";
 
 import { navigation } from "app/navigation/navigation";
 import { Router } from "@angular/router";
@@ -93,7 +93,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
     logout(event): void {
         // this.fs.logout();
-        Admin.removeAllItems();
+        User.removeAllItems();
         this.router.navigate(["/login"]);
     }
 }
