@@ -46,6 +46,11 @@ const appRoutes: Routes = [
         loadChildren: "app/main/taps/taps.module#TapsModule"
     },
     {
+        path: "store",
+        canActivate: [UserGuard],
+        loadChildren: "app/main/store/store.module#StoreModule"
+    },
+    {
         path: "**",
         redirectTo: "login"
     }

@@ -21,5 +21,12 @@ export const navigation: FuseNavigation[] = [
         type: "item",
         icon: "calendar",
         url: "/taps"
+    },
+    {
+        id: "store",
+        title: "Store",
+        type: "item",
+        icon: "calendar",
+        url: "/store"
     }
 ];
