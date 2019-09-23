@@ -14,5 +14,12 @@ export const navigation: FuseNavigation[] = [
         type: "item",
         icon: "calendar",
         url: "/inventory"
+    },
+    {
+        id: "products",
+        title: "Products",
+        type: "item",
+        icon: "calendar",
+        url: "/products"
     }
 ];
