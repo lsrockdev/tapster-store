@@ -76,7 +76,6 @@ export class SignupComponent implements OnInit {
     submit(e: Event): void {
         e.preventDefault();
         if (this.registerForm.valid) {
-            console.log(this.registerForm.value);
             this.loading = true;
             const data = this.registerForm.value;
             delete data.address;
@@ -88,13 +87,10 @@ export class SignupComponent implements OnInit {
                         res ? this.initUser(res) : of(null)
                     )
                 )
-                .catch(
-                    error => (
-                        console.log(error),
-                        (this.loading = false),
-                        (this.errorMessage = error)
-                    )
-                );
+                .catch(error => {
+                    this.loading = false;
+                    this.errorMessage = error.message;
+                });
         }
     }
 
