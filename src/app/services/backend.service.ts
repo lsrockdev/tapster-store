@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import {
     Observable,
     map,
@@ -23,11 +23,14 @@ export class BackendService {
         const headers = new HttpHeaders()
             .set("Content-Type", "application/json")
             .set("authorization", "Bearer " + token);
-        return this.http.get(api, { headers }).pipe(
-            map((res: any) => res),
-            catchError(err => this.handleError(err)),
-            finalize(() => this.onEnd())
-        );
+
+        return this.http
+            .get(api, data ? { headers, params: data } : { headers })
+            .pipe(
+                map((res: any) => res),
+                catchError(err => this.handleError(err)),
+                finalize(() => this.onEnd())
+            );
     }
 
     public publicGet(api: string, loading: string = api): Observable<any> {

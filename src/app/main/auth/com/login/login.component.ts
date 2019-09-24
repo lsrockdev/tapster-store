@@ -94,7 +94,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     private initUser(res: any): void {
         User.storeToken(res.token);
-        User.storeUser(res.user);
+
+        User.storeUser(res.storeUser);
         this.router.navigate(["/orders"]);
     }
 }

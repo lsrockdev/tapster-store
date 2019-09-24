@@ -1,4 +1,3 @@
-import { OrderStatus } from "./order_status";
 import { Address } from "./address";
 
 export class Order {
@@ -6,6 +5,7 @@ export class Order {
         "id",
         "subtotal",
         "tax",
+        "status",
         "discount",
         "total",
         "totalPaidToStore",
@@ -22,7 +22,7 @@ export class Order {
     ];
     id: number;
     deliveryAddress: Address;
-    status: OrderStatus;
+    status: number;
     billingAddress: Address;
     subtotal: number;
     tax: number;
@@ -59,7 +59,6 @@ export class Order {
         this.deliveryAddress = data.billingAddress
             ? new Address(data.billingAddress)
             : null;
-        this.status = data.status ? new OrderStatus(data.status) : null;
         this.deliveredAt = data.deliveredAt ? new Date(data.deliveredAt) : null;
         this.returnedAt = data.returnedAt ? new Date(data.returnedAt) : null;
         this.createdAt = data.createdAt ? new Date(data.createdAt) : null;

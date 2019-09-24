@@ -1,3 +1,192 @@
-<p>
-    orders coming soon!
-</p>
+<div id="sizes" class="main-content page-layout carded fullwidth inner-scroll">
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+        <!-- HEADER -->
+        <div
+            class="header accent"
+            fxLayout="column"
+            fxLayoutAlign="center center"
+            fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center"
+        >
+            <!-- APP TITLE -->
+            <div
+                class="logo mb-24 mb-md-0"
+                fxLayout="row"
+                fxLayoutAlign="start center"
+            >
+                <span class="logo-text h1">
+                    Orders
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+
+            <!-- SEARCH -->
+            <div class="search-wrapper mx-32 mx-md-0">
+                <div
+                    class="search"
+                    fxFlex
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                >
+                    <mat-icon>search</mat-icon>
+                    <input #filter placeholder="Search for a Order" />
+                </div>
+            </div>
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+            <mat-table
+                class="main-data-table size-table"
+                #table
+                [dataSource]="dataSource"
+                matSort
+                fusePerfectScrollbar
+            >
+                <!-- ID Column -->
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                        >Order No.</mat-header-cell
+                    >
+                    <mat-cell *matCellDef="let order">
+                        <p class="text-truncate">{{ order.id }}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                        >Name</mat-header-cell
+                    >
+                    <mat-cell *matCellDef="let order">
+                        <!-- <p class="text-truncate">{{ order.name }}</p> -->
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="phone">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                        >Phone No.</mat-header-cell
+                    >
+                    <mat-cell *matCellDef="let order">
+                        <p class="text-truncate">{{ order.status }}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="createdAt">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                        >Order Date</mat-header-cell
+                    >
+                    <mat-cell *matCellDef="let order">
+                        <p class="text-truncate">
+                            {{ order.createdAt | date: "medium" }}
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="deliveredAt">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                        >Delivery Date</mat-header-cell
+                    >
+                    <mat-cell *matCellDef="let order">
+                        <p class="text-truncate">
+                            {{ order.deliveredAt | date: "medium" }}
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="pickupAt">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                        >Pickup Date</mat-header-cell
+                    >
+                    <mat-cell *matCellDef="let order">
+                        <p class="text-truncate">
+                            {{ order.pickupAt | date: "medium" }}
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="returnedAt">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                        >Return Date</mat-header-cell
+                    >
+                    <mat-cell *matCellDef="let order">
+                        <p class="text-truncate">
+                            {{ order.returnedAt | date: "medium" }}
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="total">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                        >Total</mat-header-cell
+                    >
+                    <mat-cell *matCellDef="let order">
+                        <p class="text-truncate">
+                            {{ order.total | currency: "USD" }}
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="penalty">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                        >Penalty</mat-header-cell
+                    >
+                    <mat-cell *matCellDef="let order">
+                        <p class="text-truncate">
+                            {{ order.penalty | currency: "USD" }}
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="kegsDeliveredQty">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                        >No. of Kegs Picked</mat-header-cell
+                    >
+                    <mat-cell *matCellDef="let order">
+                        <p class="text-truncate">
+                            {{ order.kegsDeliveredQty }}
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="tapsDeliveredQty">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                        >No. of Taps Picked</mat-header-cell
+                    >
+                    <mat-cell *matCellDef="let order">
+                        <p class="text-truncate">
+                            {{ order.tapsDeliveredQty }}
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row
+                    *matHeaderRowDef="displayedColumns; sticky: true"
+                ></mat-header-row>
+
+                <mat-row
+                    *matRowDef="let order; columns: displayedColumns"
+                    class="order"
+                    matRipple
+                >
+                </mat-row>
+            </mat-table>
+
+            <mat-paginator
+                #paginator
+                [length]="dataSource.filteredData.length"
+                [pageIndex]="0"
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]"
+            >
+            </mat-paginator>
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>
