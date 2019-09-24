@@ -33,6 +33,7 @@ export class OrdersComponent implements OnInit {
         "id",
         "name",
         "phone",
+        "status",
         "createdAt",
         "deliveredAt",
         "pickupAt",

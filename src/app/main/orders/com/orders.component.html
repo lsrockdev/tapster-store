@@ -77,6 +77,16 @@
                     </mat-cell>
                 </ng-container>
 
+                <ng-container matColumnDef="status">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                        >Status</mat-header-cell
+                    >
+                    <mat-cell *matCellDef="let order">
+                        <p class="text-truncate">{{ order.statusString }}</p>
+                    </mat-cell>
+                </ng-container>
+
+
                 <ng-container matColumnDef="createdAt">
                     <mat-header-cell *matHeaderCellDef mat-sort-header
                         >Order Date</mat-header-cell
