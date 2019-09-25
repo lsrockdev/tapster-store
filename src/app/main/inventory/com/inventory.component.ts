@@ -236,17 +236,32 @@ export class InventoryDataSource extends DataSource<any> {
             let propertyB: number | string = "";
 
             switch (this._matSort.active) {
-                case "id":
+                case "stock":
                     [propertyA, propertyB] = [a.id, b.id];
                     break;
-                case "name":
-                    [propertyA, propertyB] = [a.name, b.name];
+                case "category":
+                    [propertyA, propertyB] = [a.category.name, b.category.name];
                     break;
-                case "size_":
-                    [propertyA, propertyB] = [a.size_, b.size_];
+                case "size":
+                    [propertyA, propertyB] = [a.size.name, b.size.name];
                     break;
-                case "description":
-                    [propertyA, propertyB] = [a.description, b.description];
+                case "product":
+                    [propertyA, propertyB] = [a.product.name, b.product.name];
+                    break;
+                case "deliveryFee":
+                    [propertyA, propertyB] = [
+                        a.category.deliveryFee,
+                        b.category.deliveryFee
+                    ];
+                    break;
+                case "depositeFee":
+                    [propertyA, propertyB] = [
+                        a.product.depositeFee,
+                        b.product.depositeFee
+                    ];
+                    break;
+                case "price":
+                    [propertyA, propertyB] = [a.price, b.price];
                     break;
             }
 
