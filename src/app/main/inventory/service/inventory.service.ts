@@ -31,7 +31,6 @@ export class InventoryService implements Resolve<any> {
     getInventories(): Promise<any> {
         return new Promise((resolve, reject) => {
             const user = User.getStoredUser();
-            console.log(user);
             this.bs
                 .get(Api.inventory.getAll, { storeId: user.Store.id })
                 .subscribe(

@@ -1,3 +1,149 @@
-<p>
-    inventory coming soon!
-</p>
+<div id="sizes" class="main-content page-layout carded fullwidth inner-scroll">
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+        <!-- HEADER -->
+        <div
+            class="header accent"
+            fxLayout="column"
+            fxLayoutAlign="center center"
+            fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center"
+        >
+            <!-- APP TITLE -->
+            <div
+                class="logo mb-24 mb-md-0"
+                fxLayout="row"
+                fxLayoutAlign="start center"
+            >
+                <span class="logo-text h1">
+                    Inventory
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+
+            <!-- SEARCH -->
+            <div class="search-wrapper mx-32 mx-md-0">
+                <div
+                    class="search"
+                    fxFlex
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                >
+                    <mat-icon>search</mat-icon>
+                    <input #filter placeholder="Search for a Inventory" />
+                </div>
+            </div>
+            <!-- / SEARCH -->
+
+            <!-- ADD BUTTON -->
+            <button
+                mat-raised-button
+                (click)="addInventory()"
+                class="add-product-button fuse-white mt-24 mt-md-0"
+            >
+                <span>Add New Inventory</span>
+            </button>
+            <!-- / ADD BUTTON -->
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+            <mat-table
+                class="main-data-table size-table"
+                #table
+                [dataSource]="dataSource"
+                matSort
+                fusePerfectScrollbar
+            >
+                <!-- ID Column
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                        >ID</mat-header-cell
+                    >
+                    <mat-cell *matCellDef="let size">
+                        <p class="text-truncate">{{ size.id }}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                        >Name</mat-header-cell
+                    >
+                    <mat-cell *matCellDef="let size">
+                        <p class="text-truncate">{{ size.name }}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="size">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                        >Size</mat-header-cell
+                    >
+                    <mat-cell *matCellDef="let size">
+                        <p class="text-truncate">{{ size.size }}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="description">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                        >Description</mat-header-cell
+                    >
+                    <mat-cell *matCellDef="let size">
+                        <p class="text-truncate">{{ size.description }}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="buttons">
+                    <mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                    ></mat-header-cell>
+                    <mat-cell *matCellDef="let size">
+                        <button
+                            (click)="editSize(size)"
+                            class="mr-8"
+                            color="accent"
+                            mat-flat-button
+                        >
+                            Edit
+                        </button>
+                        <button
+                            class="mr-8"
+                            color="warn"
+                            mat-flat-button
+                            (click)="deleteSize(size)"
+                        >
+                            Delete
+                        </button>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row
+                    *matHeaderRowDef="displayedColumns; sticky: true"
+                ></mat-header-row>
+
+                <mat-row
+                    *matRowDef="let size; columns: displayedColumns"
+                    class="size"
+                    matRipple
+                >
+                </mat-row> -->
+            </mat-table>
+
+            <mat-paginator
+                #paginator
+                [length]="dataSource.filteredData.length"
+                [pageIndex]="0"
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]"
+            >
+            </mat-paginator>
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

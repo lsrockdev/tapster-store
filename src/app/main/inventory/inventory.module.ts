@@ -22,14 +22,15 @@ import {
 import { FuseSharedModule } from "@fuse/shared.module";
 import { FuseSidebarModule } from "@fuse/components";
 import { FuseWidgetModule } from "@fuse/components/widget/widget.module";
+import { InventoryService } from "./service/inventory.service";
 
 const routes: Routes = [
     {
         path: "",
-        component: InventoryComponent
-        // resolve: {
-        //     data: SizesService
-        // }
+        component: InventoryComponent,
+        resolve: {
+            data: InventoryService
+        }
     }
 ];
 
@@ -56,6 +57,7 @@ const routes: Routes = [
         FuseSharedModule,
         FuseSidebarModule,
         FuseWidgetModule
-    ]
+    ],
+    providers: [InventoryService]
 })
 export class InventoryModule {}
