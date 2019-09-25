@@ -23,6 +23,7 @@ import { FuseSharedModule } from "@fuse/shared.module";
 import { FuseSidebarModule } from "@fuse/components";
 import { FuseWidgetModule } from "@fuse/components/widget/widget.module";
 import { InventoryService } from "./service/inventory.service";
+import { AddInventoryComponent } from "./com/add-inventory/add-inventory.component";
 
 const routes: Routes = [
     {
@@ -35,7 +36,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [InventoryComponent],
+    declarations: [InventoryComponent, AddInventoryComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
@@ -58,6 +59,7 @@ const routes: Routes = [
         FuseSidebarModule,
         FuseWidgetModule
     ],
+    entryComponents: [AddInventoryComponent],
     providers: [InventoryService]
 })
 export class InventoryModule {}

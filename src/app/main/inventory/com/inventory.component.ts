@@ -18,7 +18,7 @@ import { FuseUtils } from "@fuse/utils";
 import { MatDialog, MatDialogRef } from "@angular/material";
 import { FuseConfirmDialogComponent } from "@fuse/components/confirm-dialog/confirm-dialog.component";
 import { InventoryService } from "../service/inventory.service";
-// import { AddSizeComponent } from "../com/add-size/add-size.component";
+import { AddInventoryComponent } from "../com/add-inventory/add-inventory.component";
 import { Inventory } from "app/model";
 // import { AlertDialogComponent } from "../../shared/com/alert-dialog/alert-dialog.component";
 
@@ -117,19 +117,19 @@ export class InventoryComponent implements OnInit {
     }
 
     openAddInventoryDialog(data: Inventory): void {
-        // this.dialogRef = this._matDialog.open(AddSizeComponent, {
-        //     panelClass: "",
-        //     data: data
-        // });
-        // this.dialogRef.afterClosed().subscribe(response => {
-        //     if (!response) {
-        //         return;
-        //     }
-        //     const actionType: string = response[0];
-        //     if (actionType) {
-        //         this.refreshSizes();
-        //     }
-        // });
+        this.dialogRef = this._matDialog.open(AddInventoryComponent, {
+            panelClass: "",
+            data: data
+        });
+        this.dialogRef.afterClosed().subscribe(response => {
+            if (!response) {
+                return;
+            }
+            const actionType: string = response[0];
+            if (actionType) {
+                this.refreshInventories();
+            }
+        });
     }
 
     delete(size): void {

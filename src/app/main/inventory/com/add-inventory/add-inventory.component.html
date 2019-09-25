@@ -1,0 +1,76 @@
+<div class="dialog-content-wrapper form-edit-dialog">
+    <mat-toolbar class="mat-accent m-0">
+        <mat-toolbar-row
+            fxFlex
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+        >
+            <span class="title dialog-title">
+                {{ isEdit ? "Edit Inventory" : "Add Inventory" }}
+            </span>
+            <button
+                mat-icon-button
+                (click)="matDialogRef.close()"
+                aria-label="Close dialog"
+            >
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+        <form
+            name="inventoryForm"
+            [formGroup]="inventoryForm"
+            class="edit-form"
+            fxLayout="column"
+            fxFlex
+        >
+            <input name="id" formControlName="id" hidden />
+
+            <div
+                *ngIf="errorMessage"
+                class="p-16 mb-16 secondary-text text-center warn-100"
+            >
+                {{ errorMessage }}
+            </div>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Product</mat-label>
+                <input matInput name="product" formControlName="product" />
+                <mat-error>
+                    Product is required
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Size</mat-label>
+                <input matInput name="size" formControlName="size" />
+                <mat-error>
+                    Size is required
+                </mat-error>
+            </mat-form-field>
+
+            <div
+                mat-dialog-actions
+                class="mt-16 p-16"
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+            >
+                <div>
+                    <button
+                        mat-raised-button
+                        color="accent"
+                        type="submit"
+                        class="save-button"
+                        (click)="submit($event)"
+                        [disabled]="inventoryForm.invalid"
+                        aria-label="SAVE"
+                    >
+                        {{ isEdit ? "UPDATE" : "SAVE" }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

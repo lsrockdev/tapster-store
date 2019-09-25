@@ -45,4 +45,22 @@ export class InventoryService implements Resolve<any> {
                 );
         });
     }
+
+    // getAllProducts(): Promise<any> {
+    //     return new Promise((resolve, reject) => {
+    //         const user = User.getStoredUser();
+    //         this.bs
+    //             .get(Api.inventory.getAll, { storeId: user.Store.id })
+    //             .subscribe(
+    //                 res => {
+    //                     this.inventories = res.inventories.map(
+    //                         data => new Inventory(data)
+    //                     );
+    //                     this.onInventoriesChanged.next(this.inventories);
+    //                     resolve(this.inventories);
+    //                 },
+    //                 error => console.log(error)
+    //             );
+    //     });
+    // }
 }
