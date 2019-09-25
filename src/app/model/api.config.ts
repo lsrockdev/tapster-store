@@ -9,5 +9,12 @@ export const Api = {
     },
     orders: {
         getAll: `${server}/getOrders`
+    },
+    inventory: {
+        getAll: `${server}/getInventories`,
+        getById: `${server}/getInventoryById`,
+        add: `${server}/addInventory`,
+        delete: `${server}/deleteInventory`,
+        update: `${server}/updateInventory`
     }
 };

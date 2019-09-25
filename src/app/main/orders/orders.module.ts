@@ -17,7 +17,8 @@ import {
     MatToolbarModule,
     MatDialogModule,
     MatTableModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDatepickerModule
 } from "@angular/material";
 import { FuseSharedModule } from "@fuse/shared.module";
 import { FuseSidebarModule } from "@fuse/components";
@@ -56,7 +57,8 @@ const routes: Routes = [
         MatDialogModule,
         FuseSharedModule,
         FuseSidebarModule,
-        FuseWidgetModule
+        FuseWidgetModule,
+        MatDatepickerModule
     ],
     providers: [OrdersService]
 })

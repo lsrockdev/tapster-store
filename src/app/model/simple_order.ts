@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export enum OrderStatus {
     AwaitingPayment = 0,
     Paid = 1,
@@ -40,6 +42,8 @@ export class SimpleOrder {
     kegsReturnedQty: number;
     tapsReturnedQty: number;
 
+    customer: User;
+
     constructor(data: any = {}) {
         if (!data) {
             data = {};
@@ -48,10 +52,16 @@ export class SimpleOrder {
         this.deliveredAt = data.deliveredAt ? new Date(data.deliveredAt) : null;
         this.returnedAt = data.returnedAt ? new Date(data.returnedAt) : null;
         this.createdAt = data.createdAt ? new Date(data.createdAt) : null;
+        this.customer = data.Customer ? new User(data.Customer) : null;
+    }
+
+    get customerName(): string {
+        return this.customer
+            ? this.customer.firstName + " " + this.customer.lastName
+            : "";
     }
 
     get statusString(): string {
-        console.log(this.status);
         switch (this.status) {
             case OrderStatus.AwaitingPayment:
                 return "New";

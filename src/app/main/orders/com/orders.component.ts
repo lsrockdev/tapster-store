@@ -41,7 +41,8 @@ export class OrdersComponent implements OnInit {
         "total",
         "penalty",
         "kegsDeliveredQty",
-        "tapsDeliveredQty"
+        "tapsDeliveredQty",
+        "buttons"
     ];
 
     @ViewChild(MatPaginator)
@@ -129,6 +130,8 @@ export class OrdersDataSource extends DataSource<any> {
         );
     }
 
+    viewOrder() {}
+
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------
@@ -190,11 +193,11 @@ export class OrdersDataSource extends DataSource<any> {
                 case "name":
                     [propertyA, propertyB] = [a.name, b.name];
                     break;
-                case "size_":
-                    [propertyA, propertyB] = [a.size_, b.size_];
+                case "phone":
+                    [propertyA, propertyB] = [a.phone, b.phone];
                     break;
-                case "description":
-                    [propertyA, propertyB] = [a.description, b.description];
+                case "status":
+                    [propertyA, propertyB] = [a.status, b.status];
                     break;
             }
 
