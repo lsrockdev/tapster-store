@@ -23,7 +23,7 @@ export class AddInventoryComponent implements OnInit {
     errorMessage: string;
 
     constructor(
-        public matDialogRef: MatDialogRef<AddSizeComponent>,
+        public matDialogRef: MatDialogRef<AddInventoryComponent>,
         @Inject(MAT_DIALOG_DATA) private _data: any,
         private _formBuilder: FormBuilder,
         private inventoryService: InventoryService
