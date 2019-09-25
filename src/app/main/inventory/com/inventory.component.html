@@ -1,4 +1,7 @@
-<div id="sizes" class="main-content page-layout carded fullwidth inner-scroll">
+<div
+    id="inventories"
+    class="main-content page-layout carded fullwidth inner-scroll"
+>
     <!-- TOP BACKGROUND -->
     <div class="top-bg accent"></div>
     <!-- / TOP BACKGROUND -->
@@ -54,28 +57,29 @@
         <!-- CONTENT CARD -->
         <div class="content-card">
             <mat-table
-                class="main-data-table size-table"
+                class="main-data-table inventory-table"
                 #table
                 [dataSource]="dataSource"
                 matSort
                 fusePerfectScrollbar
             >
-                <!-- ID Column
-                <ng-container matColumnDef="id">
+                <ng-container matColumnDef="stock">
                     <mat-header-cell *matHeaderCellDef mat-sort-header
-                        >ID</mat-header-cell
+                        >In Stock</mat-header-cell
                     >
-                    <mat-cell *matCellDef="let size">
-                        <p class="text-truncate">{{ size.id }}</p>
+                    <mat-cell *matCellDef="let inventory">
+                        <p class="text-truncate">{{ inventory.id }}</p>
                     </mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="name">
+                <ng-container matColumnDef="category">
                     <mat-header-cell *matHeaderCellDef mat-sort-header
-                        >Name</mat-header-cell
+                        >Category</mat-header-cell
                     >
-                    <mat-cell *matCellDef="let size">
-                        <p class="text-truncate">{{ size.name }}</p>
+                    <mat-cell *matCellDef="let inventory">
+                        <p class="text-truncate">
+                            {{ inventory.category.name }}
+                        </p>
                     </mat-cell>
                 </ng-container>
 
@@ -83,17 +87,70 @@
                     <mat-header-cell *matHeaderCellDef mat-sort-header
                         >Size</mat-header-cell
                     >
-                    <mat-cell *matCellDef="let size">
-                        <p class="text-truncate">{{ size.size }}</p>
+                    <mat-cell *matCellDef="let inventory">
+                        <p class="text-truncate">{{ inventory.size.name }}</p>
                     </mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="description">
+                <ng-container matColumnDef="product">
                     <mat-header-cell *matHeaderCellDef mat-sort-header
-                        >Description</mat-header-cell
+                        >Product</mat-header-cell
                     >
-                    <mat-cell *matCellDef="let size">
-                        <p class="text-truncate">{{ size.description }}</p>
+                    <mat-cell *matCellDef="let inventory">
+                        <p class="text-truncate">
+                            {{ inventory.product.name }}
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="keg">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                        >Keg Type</mat-header-cell
+                    >
+                    <mat-cell *matCellDef="let inventory">
+                        <p class="text-truncate"></p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="Tap">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                        >Tap Type</mat-header-cell
+                    >
+                    <mat-cell *matCellDef="let inventory">
+                        <p class="text-truncate"></p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="deliveryFee">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                        >($) Delivery Fee</mat-header-cell
+                    >
+                    <mat-cell *matCellDef="let inventory">
+                        <p class="text-truncate">
+                            {{ inventory.category.deliveryFee }}
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="depositeFee">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                        >($) Deposite Fee</mat-header-cell
+                    >
+                    <mat-cell *matCellDef="let inventory">
+                        <p class="text-truncate">
+                            {{ inventory.product.depositeFee }}
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="price">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                        >($) Price</mat-header-cell
+                    >
+                    <mat-cell *matCellDef="let inventory">
+                        <p class="text-truncate">
+                            {{ inventory.price }}
+                        </p>
                     </mat-cell>
                 </ng-container>
 
@@ -131,7 +188,7 @@
                     class="size"
                     matRipple
                 >
-                </mat-row> -->
+                </mat-row>
             </mat-table>
 
             <mat-paginator

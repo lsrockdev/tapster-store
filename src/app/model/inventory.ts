@@ -1,33 +1,19 @@
-export class Inventory {
-    private static strKeys = ["name", "description", "imageUrl", "imageGuide"];
-    private static numKeys = [
-        "id",
-        "categoryId",
-        "isKeg",
-        "depositFee",
-        "deliveryFee",
-        "price",
-        "storeId"
-    ];
+import { Product } from "./product";
+import { Category } from "./category";
+import { Size } from "./size";
 
+export class Inventory {
     id: number;
-    name: string;
-    description: string;
-    isActive: boolean;
-    imageUrl: string;
-    imageGuide: string;
-    categoryId: number;
-    isKeg: number;
-    depositFee: number;
-    deliveryFee: number;
-    price: number;
-    storeId: number;
+    product: Product;
+    category: Category;
+    size: Size;
 
     constructor(data: any = {}) {
         if (!data) {
             data = {};
         }
-        Inventory.strKeys.forEach(k => (this[k] = data[k]));
-        Inventory.numKeys.forEach(k => (this[k] = +data[k]));
+        this.product = new Product(data.Product);
+        this.category = new Category(data.Category);
+        this.size = new Size(data.Size);
     }
 }
