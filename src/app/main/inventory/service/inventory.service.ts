@@ -73,4 +73,37 @@ export class InventoryService implements Resolve<any> {
                 );
         });
     }
+
+    addInventory(data: any) {
+        return new Promise((resolve, reject) => {
+            this.bs.post(Api.inventory.add, data).subscribe(
+                res => {
+                    resolve(res);
+                },
+                error => console.log(error)
+            );
+        });
+    }
+
+    updateInventory(data: any) {
+        return new Promise((resolve, reject) => {
+            this.bs.post(Api.inventory.update, data).subscribe(
+                res => {
+                    resolve(res);
+                },
+                error => console.log(error)
+            );
+        });
+    }
+
+    deleteInventory(id: number) {
+        return new Promise((resolve, reject) => {
+            this.bs.post(Api.inventory.delete, { id }).subscribe(
+                res => {
+                    resolve(res);
+                },
+                error => console.log(error)
+            );
+        });
+    }
 }

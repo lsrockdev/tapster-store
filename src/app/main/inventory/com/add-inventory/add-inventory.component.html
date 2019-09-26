@@ -36,19 +36,30 @@
             </div>
 
             <mat-form-field appearance="outline">
-                <mat-label>Product</mat-label>
-                <mat-select placeholder="product" formControlName="product">
+                <input
+                    type="text"
+                    placeholder="product"
+                    matInput
+                    formControlName="product"
+                    [matAutocomplete]="auto"
+                />
+                <mat-autocomplete
+                    [displayWith]="displayFn"
+                    #auto="matAutocomplete"
+                    (optionSelected)="selectedProduct($event.option.value)"
+                >
                     <mat-option
-                        *ngFor="let product of products"
+                        *ngFor="let product of filterProducts | async"
                         [value]="product"
                     >
                         {{ product.name }}
                     </mat-option>
-                </mat-select>
+                </mat-autocomplete>
                 <mat-error>
                     Product is required
                 </mat-error>
             </mat-form-field>
+
 
             <mat-form-field appearance="outline">
                 <mat-label>Size</mat-label>
@@ -59,6 +70,14 @@
                 </mat-select>
                 <mat-error>
                     Size is required
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Price (includes taxes):</mat-label>
+                <input matInput name="price" formControlName="price" />
+                <mat-error>
+                    Price is required
                 </mat-error>
             </mat-form-field>
 

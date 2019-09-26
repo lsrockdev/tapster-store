@@ -17,7 +17,8 @@ import {
     MatToolbarModule,
     MatDialogModule,
     MatTableModule,
-    MatTabsModule
+    MatTabsModule,
+    MatAutocompleteModule
 } from "@angular/material";
 import { FuseSharedModule } from "@fuse/shared.module";
 import { FuseSidebarModule } from "@fuse/components";
@@ -57,7 +58,8 @@ const routes: Routes = [
         MatDialogModule,
         FuseSharedModule,
         FuseSidebarModule,
-        FuseWidgetModule
+        FuseWidgetModule,
+        MatAutocompleteModule
     ],
     entryComponents: [AddInventoryComponent],
     providers: [InventoryService]
