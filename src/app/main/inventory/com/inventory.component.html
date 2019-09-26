@@ -159,9 +159,9 @@
                         *matHeaderCellDef
                         mat-sort-header
                     ></mat-header-cell>
-                    <mat-cell *matCellDef="let size">
+                    <mat-cell *matCellDef="let inventory">
                         <button
-                            (click)="editSize(size)"
+                            (click)="editInventory(inventory)"
                             class="mr-8"
                             color="accent"
                             mat-flat-button
@@ -172,7 +172,7 @@
                             class="mr-8"
                             color="warn"
                             mat-flat-button
-                            (click)="deleteSize(size)"
+                            (click)="deleteInventory(inventory)"
                         >
                             Delete
                         </button>

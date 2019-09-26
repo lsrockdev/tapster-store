@@ -19,7 +19,7 @@ import { MatDialog, MatDialogRef } from "@angular/material";
 import { FuseConfirmDialogComponent } from "@fuse/components/confirm-dialog/confirm-dialog.component";
 import { InventoryService } from "../service/inventory.service";
 import { AddInventoryComponent } from "../com/add-inventory/add-inventory.component";
-import { Inventory } from "app/model";
+import { Inventory, Size } from "app/model";
 // import { AlertDialogComponent } from "../../shared/com/alert-dialog/alert-dialog.component";
 
 @Component({
@@ -92,7 +92,11 @@ export class InventoryComponent implements OnInit {
     }
 
     editInventory(inventory) {
-        this.openAddInventoryDialog(inventory);
+        this.inventoryService
+            .getCategorySizes(inventory.product.categoryId)
+            .then(sizes => {
+                this.openAddInventoryDialog(inventory, sizes);
+            });
     }
 
     deleteInventory(inventory) {
@@ -116,12 +120,13 @@ export class InventoryComponent implements OnInit {
         // });
     }
 
-    openAddInventoryDialog(data: Inventory): void {
+    openAddInventoryDialog(inventory: Inventory, sizes: Size[] = null): void {
         this.inventoryService.getActiveProducts().then(products => {
             this.dialogRef = this._matDialog.open(AddInventoryComponent, {
                 panelClass: "",
                 data: {
-                    inventory: data,
+                    inventory,
+                    sizes,
                     products
                 }
             });

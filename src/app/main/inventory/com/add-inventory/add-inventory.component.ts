@@ -35,6 +35,7 @@ export class AddInventoryComponent implements OnInit {
     ) {
         this.isEdit = !!_data.inventory;
         this.products = _data.products;
+        this.sizes = _data.sizes;
         this.inventoryForm = this.buildForm(_data.inventory);
     }
 
@@ -87,25 +88,21 @@ export class AddInventoryComponent implements OnInit {
      * @returns {FormGroup}
      */
     buildForm(inventory: Inventory): FormGroup {
+        if (inventory) {
+            console.log("edit", inventory);
+            return this._formBuilder.group({
+                id: [inventory.id],
+                product: [inventory.product],
+                size: [inventory.size],
+                price: [inventory.price]
+            });
+        }
         return this._formBuilder.group({
             id: null,
             product: ["", Validators.required],
             size: ["", Validators.required],
             price: ["", Validators.required]
         });
-        // return !size
-        //     ? this._formBuilder.group({
-        //           id: null,
-        //           name: ["", Validators.required],
-        //           size: ["", Validators.required],
-        //           description: ""
-        //       })
-        //     : this._formBuilder.group({
-        //           id: [size.id],
-        //           name: [size.name],
-        //           size: [size.size],
-        //           description: [size.description]
-        //       });
     }
 
     public submit(e: Event): void {
@@ -114,7 +111,7 @@ export class AddInventoryComponent implements OnInit {
         const data = {
             id: formValue.id,
             productId: formValue.product.id,
-            sizeId: formValue.size,
+            sizeId: formValue.size.id,
             price: formValue.price,
             categoryId: formValue.product.categoryId,
             storeId: user.Store.id
