@@ -10,7 +10,7 @@ import {
 } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 import { InventoryService } from "../../service/inventory.service";
-import { Inventory } from "app/model";
+import { Inventory, Product, Size } from "app/model";
 
 @Component({
     selector: "app-add-inventory",
@@ -21,21 +21,33 @@ export class AddInventoryComponent implements OnInit {
     inventoryForm: FormGroup;
     isEdit = false;
     errorMessage: string;
-
+    products: Product[] = [];
+    sizes: Size[] = [];
     constructor(
         public matDialogRef: MatDialogRef<AddInventoryComponent>,
         @Inject(MAT_DIALOG_DATA) private _data: any,
         private _formBuilder: FormBuilder,
         private inventoryService: InventoryService
     ) {
-        this.isEdit = !!_data;
-        this.inventoryForm = this.buildForm(_data);
+        this.isEdit = !!_data.inventory;
+        this.products = _data.products;
+        this.inventoryForm = this.buildForm(_data.inventory);
     }
 
     ngOnInit(): void {
-        this.inventoryForm.valueChanges.subscribe(
-            value => (this.errorMessage = null)
-        );
+        this.inventoryForm.valueChanges.subscribe(value => {
+            this.errorMessage = null;
+        });
+        this.inventoryForm.get("product").valueChanges.subscribe(val => {
+            console.log(val);
+            // const product = val.product;
+            this.inventoryService
+                .getCategorySizes(val.categoryId)
+                .then(sizes => {
+                    this.sizes = sizes;
+                    console.log(this.sizes);
+                });
+        });
     }
 
     /**

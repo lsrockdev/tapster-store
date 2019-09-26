@@ -31,7 +31,6 @@ export class OrdersService implements Resolve<any> {
     getOrders(): Promise<any> {
         return new Promise((resolve, reject) => {
             const user = User.getStoredUser();
-            console.log(user);
             this.bs
                 .get(Api.orders.getAll, { storeId: user.Store.id })
                 .subscribe(

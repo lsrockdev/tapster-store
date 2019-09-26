@@ -37,7 +37,14 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Product</mat-label>
-                <input matInput name="product" formControlName="product" />
+                <mat-select placeholder="product" formControlName="product">
+                    <mat-option
+                        *ngFor="let product of products"
+                        [value]="product"
+                    >
+                        {{ product.name }}
+                    </mat-option>
+                </mat-select>
                 <mat-error>
                     Product is required
                 </mat-error>
@@ -45,7 +52,11 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Size</mat-label>
-                <input matInput name="size" formControlName="size" />
+                <mat-select placeholder="size" formControlName="size">
+                    <mat-option *ngFor="let size of sizes" [value]="size.id">
+                        {{ size.name }}
+                    </mat-option>
+                </mat-select>
                 <mat-error>
                     Size is required
                 </mat-error>

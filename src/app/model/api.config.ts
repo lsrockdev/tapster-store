@@ -15,6 +15,8 @@ export const Api = {
         getById: `${server}/getInventoryById`,
         add: `${server}/addInventory`,
         delete: `${server}/deleteInventory`,
-        update: `${server}/updateInventory`
+        update: `${server}/updateInventory`,
+        getActiveProducts: `${server}/getActiveProducts`,
+        getCategorySizes: `${server}/getCategorySizes`
     }
 };
