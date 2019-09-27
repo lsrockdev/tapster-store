@@ -15,13 +15,13 @@ export const navigation: FuseNavigation[] = [
         icon: "calendar",
         url: "/inventory"
     },
-    {
-        id: "taps",
-        title: "Taps",
-        type: "item",
-        icon: "calendar",
-        url: "/taps"
-    },
+    // {
+    //     id: "taps",
+    //     title: "Taps",
+    //     type: "item",
+    //     icon: "calendar",
+    //     url: "/taps"
+    // },
     {
         id: "store",
         title: "Store",
