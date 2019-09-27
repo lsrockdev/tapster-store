@@ -20,7 +20,7 @@ import { FuseConfirmDialogComponent } from "@fuse/components/confirm-dialog/conf
 import { InventoryService } from "../service/inventory.service";
 import { AddInventoryComponent } from "../com/add-inventory/add-inventory.component";
 import { Inventory, Size } from "app/model";
-// import { AlertDialogComponent } from "../../shared/com/alert-dialog/alert-dialog.component";
+import { AlertDialogComponent } from "../../shared/com/alert-dialog/alert-dialog.component";
 
 @Component({
     selector: "app-inventory",
@@ -100,24 +100,24 @@ export class InventoryComponent implements OnInit {
     }
 
     deleteInventory(inventory) {
-        // this.dialogRef = this._matDialog.open(AlertDialogComponent, {
-        //     panelClass: "",
-        //     data: {
-        //         title: "Confirmation",
-        //         message: "Are you sure you want to delete this size?"
-        //     }
-        // });
-        // this.dialogRef.afterClosed().subscribe(response => {
-        //     if (!response) {
-        //         return;
-        //     }
-        //     const actionType: string = response[0];
-        //     switch (actionType) {
-        //         case "ok":
-        //             this.delete(size);
-        //             break;
-        //     }
-        // });
+        this.dialogRef = this._matDialog.open(AlertDialogComponent, {
+            panelClass: "",
+            data: {
+                title: "Confirmation",
+                message: "Are you sure you want to delete this inventory?"
+            }
+        });
+        this.dialogRef.afterClosed().subscribe(response => {
+            if (!response) {
+                return;
+            }
+            const actionType: string = response[0];
+            switch (actionType) {
+                case "ok":
+                    this.delete(inventory.id);
+                    break;
+            }
+        });
     }
 
     openAddInventoryDialog(inventory: Inventory, sizes: Size[] = null): void {
@@ -142,8 +142,10 @@ export class InventoryComponent implements OnInit {
         });
     }
 
-    delete(size): void {
-        // this.sizeService.deleteSize(size.id).then(res => this.refreshSizes());
+    delete(id): void {
+        this.inventoryService
+            .deleteInventory(id)
+            .then(res => this.refreshInventories());
     }
 
     refreshInventories() {

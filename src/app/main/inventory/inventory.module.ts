@@ -25,6 +25,7 @@ import { FuseSidebarModule } from "@fuse/components";
 import { FuseWidgetModule } from "@fuse/components/widget/widget.module";
 import { InventoryService } from "./service/inventory.service";
 import { AddInventoryComponent } from "./com/add-inventory/add-inventory.component";
+import { SharedModule } from "../shared/shared.module";
 
 const routes: Routes = [
     {
@@ -59,7 +60,8 @@ const routes: Routes = [
         FuseSharedModule,
         FuseSidebarModule,
         FuseWidgetModule,
-        MatAutocompleteModule
+        MatAutocompleteModule,
+        SharedModule
     ],
     entryComponents: [AddInventoryComponent],
     providers: [InventoryService]

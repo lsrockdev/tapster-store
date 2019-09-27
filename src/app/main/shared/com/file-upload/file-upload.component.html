@@ -1,0 +1,32 @@
+<div>
+    <div
+        id="direct_upload"
+        ng2FileDrop
+        [uploader]="uploader"
+        (fileOver)="fileOverBase($event)"
+    >
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <mat-label>{{ title }}</mat-label>
+            <input
+                type="file"
+                id="fileupload"
+                #fileInput
+                ng2FileSelect
+                [style.display]="'none'"
+                [uploader]="uploader"
+                (change)="fileInput.value = ''"
+            />
+            <button
+                class="small-button mr-8"
+                color="accent"
+                mat-raised-button
+                (click)="fileInput.click()"
+            >
+                Select files..
+            </button>
+        </div>
+    </div>
+    <div class="mt-16">
+        <img mat-card-image [src]="imageUrl" height="80" *ngIf="imageUrl" />
+    </div>
+</div>
