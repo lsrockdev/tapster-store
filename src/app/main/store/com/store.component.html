@@ -1,3 +1,61 @@
-<p>
-    store coming soon!
-</p>
+<div id="updateprofile" class="page-layout simple fullwidth inner-scroll">
+    <!-- HEADER -->
+    <div
+        class="header accent p-16 p-sm-24"
+        fxLayout="column"
+        fxLayoutAlign="start"
+        fxLayout.gt-xs="row"
+        fxLayoutAlign.gt-xs="space-between center"
+    >
+        <!-- APP TITLE -->
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="logo" fxLayout="row" fxLayoutAlign="start center">
+                <span class="logo-text h1">
+                    Store
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <app-update-store></app-update-store>
+        <!-- <form
+            name="profileForm"
+            [formGroup]="profileForm"
+            class="profile-form"
+            fxLayout="column"
+            fxFlex
+        >
+            <input name="id" formControlName="id" hidden />
+            <mat-form-field fxLayout="row">
+                <mat-label>First Name:</mat-label>
+                <input matInput type="firstName" formControlName="firstName" />
+            </mat-form-field>
+            <mat-form-field fxLayout="row">
+                <mat-label>Last Name:</mat-label>
+                <input matInput type="lastName" formControlName="lastName" />
+            </mat-form-field>
+            <mat-form-field fxLayout="row">
+                <mat-label>Email:</mat-label>
+                <input matInput type="email" formControlName="email" />
+            </mat-form-field>
+            <mat-form-field fxLayout="row">
+                <mat-label>Phone:</mat-label>
+                <input matInput type="phone" formControlName="phone" />
+            </mat-form-field>
+            <div>
+                <button
+                    mat-raised-button
+                    color="accent"
+                    type="submit"
+                    class="save-button"
+                    (click)="submit()"
+                    [disabled]="profileForm.invalid"
+                    aria-label="UPDATE"
+                >
+                    UPDATE
+                </button>
+            </div>
+        </form> -->
+    </div>
+</div>

@@ -22,6 +22,7 @@ import {
 import { FuseSharedModule } from "@fuse/shared.module";
 import { FuseSidebarModule } from "@fuse/components";
 import { FuseWidgetModule } from "@fuse/components/widget/widget.module";
+import { UpdateStoreComponent } from './com/update-store/update-store.component';
 
 const routes: Routes = [
     {
@@ -34,7 +35,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [StoreComponent],
+    declarations: [StoreComponent, UpdateStoreComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
