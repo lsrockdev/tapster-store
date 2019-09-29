@@ -50,17 +50,6 @@ export class AddInventoryComponent implements OnInit {
                 startWith(""),
                 map(value => this._filterProduct(value))
             );
-
-        // this.inventoryForm.get("product").valueChanges.subscribe(val => {
-        //     console.log(val);
-        //     // const product = val.product;
-        //     this.inventoryService
-        //         .getCategorySizes(val.categoryId)
-        //         .then(sizes => {
-        //             this.sizes = sizes;
-        //             console.log(this.sizes);
-        //         });
-        // });
     }
 
     displayFn(product?: Product): string | undefined {
@@ -70,6 +59,12 @@ export class AddInventoryComponent implements OnInit {
     selectedProduct(value) {
         this.inventoryService.getCategorySizes(value.categoryId).then(sizes => {
             this.sizes = sizes;
+            if (this.sizes.length == 0) {
+                this.errorMessage =
+                    "Sorry! You can't choose this catergory because it don't have any size. Admin have to add sizes in this category.";
+            } else {
+                this.errorMessage = "";
+            }
         });
     }
 
@@ -89,11 +84,10 @@ export class AddInventoryComponent implements OnInit {
      */
     buildForm(inventory: Inventory): FormGroup {
         if (inventory) {
-            console.log("edit", inventory);
             return this._formBuilder.group({
                 id: [inventory.id],
                 product: [inventory.product],
-                size: [inventory.size],
+                size: [inventory.size.id],
                 price: [inventory.price]
             });
         }
@@ -111,7 +105,7 @@ export class AddInventoryComponent implements OnInit {
         const data = {
             id: formValue.id,
             productId: formValue.product.id,
-            sizeId: formValue.size.id,
+            sizeId: formValue.size,
             price: formValue.price,
             categoryId: formValue.product.categoryId,
             storeId: user.Store.id

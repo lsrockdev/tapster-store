@@ -51,8 +51,8 @@ export class OrdersComponent implements OnInit {
     @ViewChild(MatSort)
     sort: MatSort;
 
-    @ViewChild("filter")
-    filter: ElementRef;
+    // @ViewChild("filter")
+    // filter: ElementRef;
 
     selectedUser: any;
 
@@ -75,18 +75,18 @@ export class OrdersComponent implements OnInit {
             this.sort
         );
 
-        fromEvent(this.filter.nativeElement, "keyup")
-            .pipe(
-                takeUntil(this._unsubscribeAll),
-                debounceTime(150),
-                distinctUntilChanged()
-            )
-            .subscribe(() => {
-                if (!this.dataSource) {
-                    return;
-                }
-                this.dataSource.filter = this.filter.nativeElement.value;
-            });
+        // fromEvent(this.filter.nativeElement, "keyup")
+        //     .pipe(
+        //         takeUntil(this._unsubscribeAll),
+        //         debounceTime(150),
+        //         distinctUntilChanged()
+        //     )
+        //     .subscribe(() => {
+        //         if (!this.dataSource) {
+        //             return;
+        //         }
+        //         this.dataSource.filter = this.filter.nativeElement.value;
+        //     });
     }
 }
 
