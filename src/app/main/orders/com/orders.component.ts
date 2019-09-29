@@ -7,6 +7,8 @@ import {
 } from "@angular/core";
 import { MatPaginator, MatSort } from "@angular/material";
 import { BehaviorSubject, fromEvent, merge, Observable, Subject } from "rxjs";
+import { Router } from "@angular/router";
+
 import {
     debounceTime,
     distinctUntilChanged,
@@ -63,7 +65,8 @@ export class OrdersComponent implements OnInit {
 
     constructor(
         public _matDialog: MatDialog,
-        private ordersService: OrdersService
+        private ordersService: OrdersService,
+        private router: Router
     ) {
         this._unsubscribeAll = new Subject();
     }
@@ -74,19 +77,10 @@ export class OrdersComponent implements OnInit {
             this.paginator,
             this.sort
         );
+    }
 
-        // fromEvent(this.filter.nativeElement, "keyup")
-        //     .pipe(
-        //         takeUntil(this._unsubscribeAll),
-        //         debounceTime(150),
-        //         distinctUntilChanged()
-        //     )
-        //     .subscribe(() => {
-        //         if (!this.dataSource) {
-        //             return;
-        //         }
-        //         this.dataSource.filter = this.filter.nativeElement.value;
-        //     });
+    viewOrder(order) {
+        this.router.navigate(["/orders/" + order.id]);
     }
 }
 
