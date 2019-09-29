@@ -18,5 +18,9 @@ export const Api = {
         update: `${server}/updateInventory`,
         getActiveProducts: `${server}/getActiveProducts`,
         getCategorySizes: `${server}/getCategorySizes`
+    },
+    store: {
+        getById: `${server}/getStoreDetails`,
+        update: `${server}/updateStore`
     }
 };

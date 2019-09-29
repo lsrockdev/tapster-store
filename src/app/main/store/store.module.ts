@@ -22,7 +22,8 @@ import {
 import { FuseSharedModule } from "@fuse/shared.module";
 import { FuseSidebarModule } from "@fuse/components";
 import { FuseWidgetModule } from "@fuse/components/widget/widget.module";
-import { UpdateStoreComponent } from './com/update-store/update-store.component';
+import { UpdateStoreComponent } from "./com/update-store/update-store.component";
+import { StoresService } from "./service/stores.service";
 
 const routes: Routes = [
     {
@@ -57,6 +58,7 @@ const routes: Routes = [
         FuseSharedModule,
         FuseSidebarModule,
         FuseWidgetModule
-    ]
+    ],
+    providers: [StoresService]
 })
 export class StoreModule {}

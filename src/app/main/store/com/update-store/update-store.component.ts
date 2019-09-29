@@ -21,18 +21,9 @@ export class UpdateStoreComponent implements OnInit {
     storeForm: FormGroup;
 
     constructor(
-        private _formBuilder: FormBuilder
-    ) // private profileService: ProfileService
-    {
+        private _formBuilder: FormBuilder // private profileService: ProfileService
+    ) {
         this.storeForm = this.buildform();
-        // const admin = Admin.getStoredAdmin();
-        // this.profileForm.patchValue({
-        //     id: admin.id,
-        //     firstName: admin.firstName,
-        //     lastName: admin.lastName,
-        //     email: admin.email,
-        //     phone: admin.phone
-        // });
     }
 
     ngOnInit() {}
