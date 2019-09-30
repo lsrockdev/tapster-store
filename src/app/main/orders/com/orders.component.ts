@@ -81,7 +81,7 @@ export class OrdersComponent implements OnInit {
         private route: ActivatedRoute
     ) {
         this._unsubscribeAll = new Subject();
-        this.setPastDays(14);
+        this.setPastDays(7);
         this.refreshData();
     }
 

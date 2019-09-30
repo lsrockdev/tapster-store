@@ -40,7 +40,7 @@ export { Driver } from "./driver";
 export { Setting } from "./setting";
 export { Order } from "./order";
 export { CustomValidators } from "./util/custom.validators";
-export { SimpleOrder } from "./simple_order";
+export { SimpleOrder } from "./order/simple_order";
 export { Inventory } from "./inventory";
 
 export { TimeUtil } from "./util/time.util";

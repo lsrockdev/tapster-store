@@ -5,6 +5,8 @@ import {
     RouterStateSnapshot
 } from "@angular/router";
 import { BehaviorSubject, Observable } from "rxjs";
+import { map } from "rxjs/operators";
+
 import { SimpleOrder, Api, User } from "../../../model";
 import { BackendService } from "../../../services/backend.service";
 
@@ -22,7 +24,16 @@ export class OrdersService implements Resolve<any> {
         state: RouterStateSnapshot
     ): Observable<any> | Promise<any> | any {
         return new Promise((resolve, reject) => {
-            const params = route.params;
+            let params = route.params;
+            if (!params.beginDate) {
+                params = {
+                    beginDate: new Date(Date.now() - 1000 * 60 * 60 * 24 * 7)
+                        .toISOString()
+                        .slice(0, 10),
+                    endDate: new Date().toISOString().slice(0, 10),
+                    status: 0
+                };
+            }
             Promise.all([this.getOrders(params)]).then(() => {
                 resolve();
             }, reject);
@@ -48,5 +59,17 @@ export class OrdersService implements Resolve<any> {
                     error => console.log(error)
                 );
         });
+    }
+
+    getOrderById(id) {
+        return this.bs.get(Api.orders.getOrderById, { id }).pipe(
+            map(res => {
+                console.log(res);
+                if (res) {
+                    return new SimpleOrder(res.order);
+                }
+                return null;
+            })
+        );
     }
 }

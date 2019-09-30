@@ -33,6 +33,10 @@ export class User {
         this.store = new Stores(data.store);
     }
 
+    get name(): string {
+        return this.firstName + " " + this.lastName;
+    }
+
     public static storeToken(token: string) {
         localStorage.setItem(TokenKey, token);
     }

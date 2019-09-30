@@ -1,0 +1,23 @@
+@import "src/@fuse/scss/fuse";
+@import "src/sass/main";
+
+#orderDetails {
+    .order-header {
+        height: 200px;
+        width: 100%;
+        .section {
+            width: 50%;
+            margin-bottom: 16px;
+            .label {
+                width: 200px;
+            }
+        }
+        mat-label {
+            font-size: 1.5rem;
+        }
+    }
+    // .store-orders {
+    //     max-height: 500px;
+    //     overflow: scroll;
+    // }
+}

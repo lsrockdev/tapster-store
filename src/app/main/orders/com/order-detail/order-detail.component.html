@@ -1,3 +1,82 @@
-<p>
-  order-detail works!
-</p>
+<div id="orderDetails" class="page-layout simple fullwidth inner-scroll">
+    <!-- HEADER -->
+    <div
+        class="header accent p-16 p-sm-24"
+        fxLayout="column"
+        fxLayoutAlign="start"
+        fxLayout.gt-xs="row"
+        fxLayoutAlign.gt-xs="space-between center"
+    >
+        <!-- APP TITLE -->
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="logo" fxLayout="row" fxLayoutAlign="start center">
+                <span class="logo-text h1">
+                    Order Information
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="order | async; let o" class="" fxLayout="column">
+        <div class="order-header p-16" fxLayout="column">
+            <div fxLayout="row" class="section">
+                <mat-label class="label">Order No:</mat-label>
+                <mat-label>{{ o.id }}</mat-label>
+            </div>
+
+            <div fxLayout="row" class="section">
+                <mat-label class="label">User Name:</mat-label>
+                <mat-label>name</mat-label>
+            </div>
+
+            <div fxLayout="row" class="section">
+                <mat-label class="label">Phone No:</mat-label>
+                <mat-label>name</mat-label>
+            </div>
+
+            <div fxLayout="row" class="section">
+                <mat-label class="label">Driver Name:</mat-label>
+                <mat-label>name</mat-label>
+            </div>
+
+            <div fxLayout="row" class="section">
+                <mat-label class="label">Driver Phone:</mat-label>
+                <mat-label>name</mat-label>
+            </div>
+
+            <div fxLayout="row" class="section">
+                <mat-label class="label">Delivery Date:</mat-label>
+                <mat-label>name</mat-label>
+            </div>
+
+            <div fxLayout="row" class="section">
+                <mat-label class="label">Order Date:</mat-label>
+                <mat-label>name</mat-label>
+            </div>
+
+            <div fxLayout="row" class="section">
+                <mat-label class="label">Email:</mat-label>
+                <mat-label>name</mat-label>
+            </div>
+
+            <div fxLayout="row" class="section">
+                <mat-label class="label">($) Tip:</mat-label>
+                <mat-label>name</mat-label>
+            </div>
+
+            <div fxLayout="row" class="section">
+                <mat-label class="label">Billing Address:</mat-label>
+                <mat-label>name</mat-label>
+            </div>
+
+            <div fxLayout="row" class="section">
+                <mat-label class="label">Shipping Address:</mat-label>
+                <mat-label>name</mat-label>
+            </div>
+            <div fxLayout="row" class="section">
+                <mat-label class="label">Shipping Address:</mat-label>
+                <mat-label>Status:</mat-label>
+            </div>
+        </div>
+    </div>
+</div>
