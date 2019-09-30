@@ -25,8 +25,12 @@
             </div>
             <!-- / APP TITLE -->
 
-            <div class="search-option m-24">
-                <app-search-option></app-search-option>
+            <div class="search-option m-24" *ngIf="beginDate && endDate">
+                <app-search-option     
+                [beginDate]="beginDate"
+                [endDate]="endDate"
+                (event)="changeDateRange($event.data)"
+            ></app-search-option>
             </div>
         </div>
         <!-- / HEADER -->

@@ -43,4 +43,6 @@ export { CustomValidators } from "./util/custom.validators";
 export { SimpleOrder } from "./simple_order";
 export { Inventory } from "./inventory";
 
+export { TimeUtil } from "./util/time.util";
+
 export { Api } from "./api.config";

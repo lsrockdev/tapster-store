@@ -12,7 +12,7 @@
                 matInput
                 [matDatepicker]="startPicker"
                 placeholder="Start Date"
-                formControlName="startDate"
+                formControlName="beginDate"
             />
             <mat-datepicker-toggle
                 matSuffix
@@ -38,8 +38,11 @@
         <mat-form-field appearance="outline" class="ml-16">
             <mat-label>Status</mat-label>
             <mat-select placeholder="status" formControlName="status">
-                <mat-option *ngFor="let status of statues" [value]="status">
-                    {{ status }}
+                <mat-option
+                    *ngFor="let status of statues"
+                    [value]="status.value"
+                >
+                    {{ status.key }}
                 </mat-option>
             </mat-select>
         </mat-form-field>
