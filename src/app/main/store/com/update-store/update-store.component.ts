@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation, Input } from "@angular/core";
 import { fuseAnimations } from "@fuse/animations";
 import {
     FormControl,
@@ -9,8 +9,8 @@ import {
     AbstractControl,
     ValidationErrors
 } from "@angular/forms";
-// import { ProfileService } from "../../service/profile.service";
-import { User } from "../../../../model";
+import { StoresService } from "../../service/stores.service";
+import { User, Stores } from "../../../../model";
 
 @Component({
     selector: "app-update-store",
@@ -19,32 +19,48 @@ import { User } from "../../../../model";
 })
 export class UpdateStoreComponent implements OnInit {
     storeForm: FormGroup;
+    @Input() store: Stores;
 
     constructor(
-        private _formBuilder: FormBuilder // private profileService: ProfileService
-    ) {
+        private _formBuilder: FormBuilder,
+        private storesService: StoresService
+    ) {}
+
+    ngOnInit() {
+        console.log(this.store);
         this.storeForm = this.buildform();
     }
 
-    ngOnInit() {}
-
     submit() {
-        // const data = this.storeForm.value;
-        // this.profileService.updateProfile(data).then((res: any) => {
-        //     Admin.storeAdmin(res.user);
-        // });
+        const formData = this.storeForm.value;
+        const address = {
+            address1: formData.address1,
+            city: formData.city,
+            state: formData.state,
+            zipCode: formData.zipCode
+        };
+
+        const data = {
+            id: formData.id,
+            address: address,
+            description: formData.description,
+            name: formData.name,
+            numberOfDays: formData.numberOfDays
+        };
+
+        this.storesService.updateStore(data).then((res: any) => {});
     }
 
     buildform() {
         return this._formBuilder.group({
-            id: null,
-            name: [null, Validators.required],
-            description: [null],
-            address: [null, Validators.required],
-            city: [null, Validators.required],
-            state: [null, Validators.required],
-            zipCode: [null, Validators.required],
-            numberOfDays: [null, Validators.required]
+            id: this.store.id,
+            name: [this.store.name, Validators.required],
+            description: [this.store.description],
+            address1: [this.store.address.address1, Validators.required],
+            city: [this.store.address.city, Validators.required],
+            state: [this.store.address.state, Validators.required],
+            zipCode: [this.store.address.zipCode, Validators.required],
+            numberOfDays: [this.store.numberOfDays]
         });
     }
 }

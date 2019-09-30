@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div class="content">
-        <app-update-store></app-update-store>
+    <div *ngIf="store | async; let s" class="content">
+        <app-update-store [store]="s"></app-update-store>
     </div>
 </div>

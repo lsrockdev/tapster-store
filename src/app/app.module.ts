@@ -48,7 +48,7 @@ const appRoutes: Routes = [
     {
         path: "store",
         canActivate: [UserGuard],
-        loadChildren: "app/main/store/store.module#StoreModule"
+        loadChildren: "app/main/store/store.module#StoresModule"
     },
     {
         path: "**",

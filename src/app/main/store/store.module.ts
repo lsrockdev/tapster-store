@@ -61,4 +61,4 @@ const routes: Routes = [
     ],
     providers: [StoresService]
 })
-export class StoreModule {}
+export class StoresModule {}
