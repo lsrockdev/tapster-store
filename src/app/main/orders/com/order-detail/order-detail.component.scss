@@ -8,16 +8,17 @@
         .section {
             width: 50%;
             margin-bottom: 16px;
+            display: inline-block;
+            text-align: left;
+            position: relative;
             .label {
-                width: 200px;
+                width: 30%;
+                display: inline-block;
+                text-align: left;
             }
         }
         mat-label {
             font-size: 1.5rem;
         }
     }
-    // .store-orders {
-    //     max-height: 500px;
-    //     overflow: scroll;
-    // }
 }

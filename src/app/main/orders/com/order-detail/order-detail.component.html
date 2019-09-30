@@ -18,58 +18,58 @@
     </div>
 
     <div *ngIf="order | async; let o" class="" fxLayout="column">
-        <div class="order-header p-16" fxLayout="column">
-            <div fxLayout="row" class="section">
+        <div class="order-header p-16">
+            <div class="section">
                 <mat-label class="label">Order No:</mat-label>
                 <mat-label>{{ o.id }}</mat-label>
             </div>
 
-            <div fxLayout="row" class="section">
+            <div class="section">
                 <mat-label class="label">User Name:</mat-label>
                 <mat-label>{{ o.customer.name }}</mat-label>
             </div>
 
-            <div fxLayout="row" class="section">
+            <div class="section">
                 <mat-label class="label">Phone No:</mat-label>
                 <mat-label>{{ o.customer.phone }}</mat-label>
             </div>
 
-            <div fxLayout="row" class="section">
+            <div class="section">
                 <mat-label class="label">Driver Name:</mat-label>
                 <mat-label>{{ o.driver.name }}</mat-label>
             </div>
 
-            <div fxLayout="row" class="section">
+            <div class="section">
                 <mat-label class="label">Driver Phone:</mat-label>
                 <mat-label>{{ o.driver.phone }}</mat-label>
             </div>
 
-            <div fxLayout="row" class="section">
+            <div class="section">
                 <mat-label class="label">Delivery Date:</mat-label>
                 <mat-label>{{ o.deliveredAt | date: "medium" }}</mat-label>
             </div>
 
-            <div fxLayout="row" class="section">
+            <div class="section">
                 <mat-label class="label">Order Date:</mat-label>
                 <mat-label>{{ o.createdAt | date: "medium" }}</mat-label>
             </div>
 
-            <div fxLayout="row" class="section">
+            <div class="section">
                 <mat-label class="label">Email:</mat-label>
                 <mat-label>{{ o.customer.email }}</mat-label>
             </div>
 
-            <div fxLayout="row" class="section">
+            <div class="section">
                 <mat-label class="label">($) Total:</mat-label>
                 <mat-label>{{ o.total | currency: "USD" }}</mat-label>
             </div>
 
-            <div fxLayout="row" class="section">
+            <div class="section">
                 <mat-label class="label">Shipping Address:</mat-label>
                 <mat-label>{{ o.customer.address.address1 }}</mat-label>
             </div>
-            <div fxLayout="row" class="section">
-                <mat-label class="label">Shipping Address:</mat-label>
+            <div class="section">
+                <mat-label class="label">Status:</mat-label>
                 <mat-label>{{ o.statusString }}</mat-label>
             </div>
         </div>
