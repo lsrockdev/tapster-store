@@ -22,17 +22,21 @@ export class OrdersService implements Resolve<any> {
         state: RouterStateSnapshot
     ): Observable<any> | Promise<any> | any {
         return new Promise((resolve, reject) => {
-            Promise.all([this.getOrders()]).then(() => {
+            const params = route.params;
+            Promise.all([this.getOrders(params)]).then(() => {
                 resolve();
             }, reject);
         });
     }
 
-    getOrders(): Promise<any> {
+    getOrders(params: any): Promise<any> {
         return new Promise((resolve, reject) => {
             const user = User.getStoredUser();
             this.bs
-                .get(Api.orders.getAll, { storeId: user.Store.id })
+                .get(Api.orders.getAll, {
+                    ...params,
+                    storeId: user.Store.id
+                })
                 .subscribe(
                     res => {
                         this.orders = res.orders.map(
