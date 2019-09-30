@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 import { take } from "rxjs/operators";
-import { SimpleOrder } from "../../../../model";
+import { Order } from "../../../../model";
 import { OrdersService } from "../../service/orders.service";
 import { ActivatedRoute } from "@angular/router";
 
@@ -11,7 +11,7 @@ import { ActivatedRoute } from "@angular/router";
     styleUrls: ["./order-detail.component.scss"]
 })
 export class OrderDetailComponent implements OnInit {
-    order: Observable<SimpleOrder>;
+    order: Observable<Order>;
     constructor(
         private orderService: OrdersService,
         private route: ActivatedRoute

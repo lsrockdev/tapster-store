@@ -7,7 +7,7 @@ import {
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
-import { SimpleOrder, Api, User } from "../../../model";
+import { Order, Api, User, SimpleOrder } from "../../../model";
 import { BackendService } from "../../../services/backend.service";
 
 @Injectable()
@@ -66,7 +66,8 @@ export class OrdersService implements Resolve<any> {
             map(res => {
                 console.log(res);
                 if (res) {
-                    return new SimpleOrder(res.order);
+                    console.log(new Order(res.order));
+                    return new Order(res.order);
                 }
                 return null;
             })
