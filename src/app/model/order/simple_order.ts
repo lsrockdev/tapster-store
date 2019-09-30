@@ -1,4 +1,4 @@
-import { User } from "./user";
+import { User } from "../../model";
 
 export enum OrderStatus {
     AwaitingPayment = 0,

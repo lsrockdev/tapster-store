@@ -8,7 +8,8 @@ export const Api = {
         register: `${server}/register`
     },
     orders: {
-        getAll: `${server}/getOrders`
+        getAll: `${server}/getOrders`,
+        getOrderById: `${server}/getOrderById`
     },
     inventory: {
         getAll: `${server}/getInventories`,
@@ -18,5 +19,9 @@ export const Api = {
         update: `${server}/updateInventory`,
         getActiveProducts: `${server}/getActiveProducts`,
         getCategorySizes: `${server}/getCategorySizes`
+    },
+    store: {
+        getById: `${server}/getStoreDetails`,
+        update: `${server}/updateStore`
     }
 };

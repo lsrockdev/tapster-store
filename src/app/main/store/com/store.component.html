@@ -17,45 +17,7 @@
         </div>
     </div>
 
-    <div class="content">
-        <app-update-store></app-update-store>
-        <!-- <form
-            name="profileForm"
-            [formGroup]="profileForm"
-            class="profile-form"
-            fxLayout="column"
-            fxFlex
-        >
-            <input name="id" formControlName="id" hidden />
-            <mat-form-field fxLayout="row">
-                <mat-label>First Name:</mat-label>
-                <input matInput type="firstName" formControlName="firstName" />
-            </mat-form-field>
-            <mat-form-field fxLayout="row">
-                <mat-label>Last Name:</mat-label>
-                <input matInput type="lastName" formControlName="lastName" />
-            </mat-form-field>
-            <mat-form-field fxLayout="row">
-                <mat-label>Email:</mat-label>
-                <input matInput type="email" formControlName="email" />
-            </mat-form-field>
-            <mat-form-field fxLayout="row">
-                <mat-label>Phone:</mat-label>
-                <input matInput type="phone" formControlName="phone" />
-            </mat-form-field>
-            <div>
-                <button
-                    mat-raised-button
-                    color="accent"
-                    type="submit"
-                    class="save-button"
-                    (click)="submit()"
-                    [disabled]="profileForm.invalid"
-                    aria-label="UPDATE"
-                >
-                    UPDATE
-                </button>
-            </div>
-        </form> -->
+    <div *ngIf="store | async; let s" class="content">
+        <app-update-store [store]="s"></app-update-store>
     </div>
 </div>

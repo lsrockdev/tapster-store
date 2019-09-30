@@ -1,2 +1,8 @@
 @import "src/@fuse/scss/fuse";
 @import "src/sass/main";
+.search-option {
+    width: 100%;
+    border-radius: 28px;
+    overflow: hidden;
+    // background: white;
+}

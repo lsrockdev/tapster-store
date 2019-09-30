@@ -24,6 +24,8 @@ import { FuseSharedModule } from "@fuse/shared.module";
 import { FuseSidebarModule } from "@fuse/components";
 import { FuseWidgetModule } from "@fuse/components/widget/widget.module";
 import { OrdersService } from "./service/orders.service";
+import { SearchOptionComponent } from "./com/search-option/search-option.component";
+import { OrderDetailComponent } from "./com/order-detail/order-detail.component";
 
 const routes: Routes = [
     {
@@ -32,11 +34,19 @@ const routes: Routes = [
         resolve: {
             data: OrdersService
         }
+    },
+    {
+        path: ":id",
+        component: OrderDetailComponent
     }
 ];
 
 @NgModule({
-    declarations: [OrdersComponent],
+    declarations: [
+        OrdersComponent,
+        SearchOptionComponent,
+        OrderDetailComponent
+    ],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),

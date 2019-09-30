@@ -1,7 +1,7 @@
 export const UserKey = "user";
 export const TokenKey = "token";
 
-import { Stores } from "./stores";
+import { Stores, Address } from "../model";
 
 export class User {
     id: number;
@@ -15,6 +15,8 @@ export class User {
     isFbUser: boolean;
     dob: Date;
     store: Stores;
+
+    address: Address;
 
     constructor(data: any = {}) {
         if (!data) {
@@ -31,6 +33,10 @@ export class User {
         this.isFbUser = data.isFbUser;
         this.dob = data.dob;
         this.store = new Stores(data.store);
+    }
+
+    get name(): string {
+        return this.firstName + " " + this.lastName;
     }
 
     public static storeToken(token: string) {

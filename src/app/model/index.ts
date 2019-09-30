@@ -38,9 +38,13 @@ export { Stores } from "./stores";
 export { StoreCode } from "./storeCode";
 export { Driver } from "./driver";
 export { Setting } from "./setting";
-export { Order } from "./order";
 export { CustomValidators } from "./util/custom.validators";
-export { SimpleOrder } from "./simple_order";
+export { SimpleOrder } from "./order/simple_order";
+export { Order } from "./order/order";
+
 export { Inventory } from "./inventory";
+export { LineItem } from "./lineItem";
+
+export { TimeUtil } from "./util/time.util";
 
 export { Api } from "./api.config";

@@ -5,16 +5,22 @@ import {
     RouterStateSnapshot
 } from "@angular/router";
 import { BehaviorSubject, Observable } from "rxjs";
-import { SimpleOrder, Api, User } from "../../../model";
+import { map } from "rxjs/operators";
+
+import { Order, Api, User, SimpleOrder, LineItem } from "../../../model";
 import { BackendService } from "../../../services/backend.service";
 
 @Injectable()
 export class OrdersService implements Resolve<any> {
     orders: SimpleOrder[];
     onOrdersChanged: BehaviorSubject<any>;
+    onChooseOrderChanged: BehaviorSubject<any>;
+
+    lineItems: LineItem[] = [];
 
     constructor(private bs: BackendService) {
         this.onOrdersChanged = new BehaviorSubject({});
+        this.onChooseOrderChanged = new BehaviorSubject({});
     }
 
     resolve(
@@ -22,17 +28,30 @@ export class OrdersService implements Resolve<any> {
         state: RouterStateSnapshot
     ): Observable<any> | Promise<any> | any {
         return new Promise((resolve, reject) => {
-            Promise.all([this.getOrders()]).then(() => {
+            let params = route.params;
+            if (!params.beginDate) {
+                params = {
+                    beginDate: new Date(Date.now() - 1000 * 60 * 60 * 24 * 7)
+                        .toISOString()
+                        .slice(0, 10),
+                    endDate: new Date().toISOString().slice(0, 10),
+                    status: 0
+                };
+            }
+            Promise.all([this.getOrders(params)]).then(() => {
                 resolve();
             }, reject);
         });
     }
 
-    getOrders(): Promise<any> {
+    getOrders(params: any): Promise<any> {
         return new Promise((resolve, reject) => {
             const user = User.getStoredUser();
             this.bs
-                .get(Api.orders.getAll, { storeId: user.Store.id })
+                .get(Api.orders.getAll, {
+                    ...params,
+                    storeId: user.Store.id
+                })
                 .subscribe(
                     res => {
                         this.orders = res.orders.map(
@@ -44,5 +63,20 @@ export class OrdersService implements Resolve<any> {
                     error => console.log(error)
                 );
         });
+    }
+
+    getOrderById(id) {
+        return this.bs.get(Api.orders.getOrderById, { id }).pipe(
+            map(res => {
+                console.log(res);
+                if (res) {
+                    const order = new Order(res.order);
+                    this.lineItems = order.lineItems;
+                    this.onChooseOrderChanged.next(this.lineItems);
+                    return order;
+                }
+                return null;
+            })
+        );
     }
 }

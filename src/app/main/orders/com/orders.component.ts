@@ -6,18 +6,25 @@ import {
     ViewEncapsulation
 } from "@angular/core";
 import { MatPaginator, MatSort } from "@angular/material";
-import { BehaviorSubject, fromEvent, merge, Observable, Subject } from "rxjs";
 import {
-    debounceTime,
-    distinctUntilChanged,
-    map,
-    takeUntil
-} from "rxjs/operators";
+    BehaviorSubject,
+    fromEvent,
+    merge,
+    Observable,
+    Subject,
+    Subscription
+} from "rxjs";
+import { take } from "rxjs/operators";
+
+import { Router, ActivatedRoute } from "@angular/router";
+
+import { map } from "rxjs/operators";
 import { DataSource } from "@angular/cdk/collections";
 import { FuseUtils } from "@fuse/utils";
 import { MatDialog, MatDialogRef } from "@angular/material";
 import { FuseConfirmDialogComponent } from "@fuse/components/confirm-dialog/confirm-dialog.component";
 import { OrdersService } from "../service/orders.service";
+import { TimeUtil } from "../../../model";
 
 @Component({
     selector: "app-orders",
@@ -51,8 +58,14 @@ export class OrdersComponent implements OnInit {
     @ViewChild(MatSort)
     sort: MatSort;
 
-    @ViewChild("filter")
-    filter: ElementRef;
+    beginDate: string;
+    endDate: string;
+    status: number;
+
+    sub: Subscription;
+
+    // @ViewChild("filter")
+    // filter: ElementRef;
 
     selectedUser: any;
 
@@ -63,9 +76,13 @@ export class OrdersComponent implements OnInit {
 
     constructor(
         public _matDialog: MatDialog,
-        private ordersService: OrdersService
+        private ordersService: OrdersService,
+        private router: Router,
+        private route: ActivatedRoute
     ) {
         this._unsubscribeAll = new Subject();
+        this.setPastDays(7);
+        this.refreshData();
     }
 
     ngOnInit(): void {
@@ -74,19 +91,51 @@ export class OrdersComponent implements OnInit {
             this.paginator,
             this.sort
         );
+    }
 
-        fromEvent(this.filter.nativeElement, "keyup")
-            .pipe(
-                takeUntil(this._unsubscribeAll),
-                debounceTime(150),
-                distinctUntilChanged()
-            )
-            .subscribe(() => {
-                if (!this.dataSource) {
-                    return;
-                }
-                this.dataSource.filter = this.filter.nativeElement.value;
-            });
+    refreshData() {
+        this.sub = this.route.params.subscribe(params => {
+            if (!params.beginDate || !params.endDate) {
+                params = {
+                    ...params,
+                    beginDate: TimeUtil.chicagoDateStringWeekAgo,
+                    endDate: TimeUtil.chicagoToday,
+                    status: 0
+                };
+                this.beginDate = params.beginDate;
+                this.endDate = params.endDate;
+                this.navigateToParams(params);
+            } else {
+                this.beginDate = params.beginDate;
+                this.endDate = params.endDate;
+            }
+        });
+    }
+
+    viewOrder(order) {
+        this.router.navigate(["/orders/" + order.id]);
+    }
+
+    public setPastDays(days: number) {
+        this.changeDateRange({
+            beginDate: new Date(Date.now() - 1000 * 60 * 60 * 24 * days)
+                .toISOString()
+                .slice(0, 10),
+            endDate: new Date().toISOString().slice(0, 10),
+            status: 0
+        });
+    }
+
+    public changeDateRange(data: any) {
+        this.navigateToParams(data);
+    }
+
+    private navigateToParams(data: any = {}) {
+        this.route.params
+            .pipe(take(1))
+            .subscribe(params =>
+                this.router.navigate(["/orders", { ...params, ...data }])
+            );
     }
 }
 

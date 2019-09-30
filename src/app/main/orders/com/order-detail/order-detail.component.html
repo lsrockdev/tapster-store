@@ -1,0 +1,204 @@
+<div id="orderDetails" class="page-layout simple fullwidth inner-scroll">
+    <!-- HEADER -->
+    <div
+        class="header accent p-16 p-sm-24"
+        fxLayout="column"
+        fxLayoutAlign="start"
+        fxLayout.gt-xs="row"
+        fxLayoutAlign.gt-xs="space-between center"
+    >
+        <!-- APP TITLE -->
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="logo" fxLayout="row" fxLayoutAlign="start center">
+                <span class="logo-text h1">
+                    Order Information
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="order | async; let o" class="" fxLayout="column">
+        <div class="order-header p-16">
+            <div class="section">
+                <mat-label class="label">Order No:</mat-label>
+                <mat-label>{{ o.id }}</mat-label>
+            </div>
+
+            <div class="section">
+                <mat-label class="label">User Name:</mat-label>
+                <mat-label>{{ o.customer.name }}</mat-label>
+            </div>
+
+            <div class="section">
+                <mat-label class="label">Phone No:</mat-label>
+                <mat-label>{{ o.customer.phone }}</mat-label>
+            </div>
+
+            <div class="section">
+                <mat-label class="label">Driver Name:</mat-label>
+                <mat-label>{{ o.driver.name }}</mat-label>
+            </div>
+
+            <div class="section">
+                <mat-label class="label">Driver Phone:</mat-label>
+                <mat-label>{{ o.driver.phone }}</mat-label>
+            </div>
+
+            <div class="section">
+                <mat-label class="label">Delivery Date:</mat-label>
+                <mat-label>{{ o.deliveredAt | date: "medium" }}</mat-label>
+            </div>
+
+            <div class="section">
+                <mat-label class="label">Order Date:</mat-label>
+                <mat-label>{{ o.createdAt | date: "medium" }}</mat-label>
+            </div>
+
+            <div class="section">
+                <mat-label class="label">Email:</mat-label>
+                <mat-label>{{ o.customer.email }}</mat-label>
+            </div>
+
+            <div class="section">
+                <mat-label class="label">($) Total:</mat-label>
+                <mat-label>{{ o.total | currency: "USD" }}</mat-label>
+            </div>
+
+            <div class="section">
+                <mat-label class="label">Shipping Address:</mat-label>
+                <mat-label>{{ o.customer.address.address1 }}</mat-label>
+            </div>
+            <div class="section">
+                <mat-label class="label">Status:</mat-label>
+                <mat-label>{{ o.statusString }}</mat-label>
+            </div>
+        </div>
+    </div>
+
+    <div class="order-product">
+        <mat-table
+            class="main-data-table products-table"
+            #table
+            [dataSource]="dataSource"
+            matSort
+            fusePerfectScrollbar
+        >
+            <ng-container matColumnDef="product">
+                <mat-header-cell *matHeaderCellDef mat-sort-header
+                    >Product</mat-header-cell
+                >
+                <mat-cell *matCellDef="let lineItem">
+                    <p class="text-truncate">
+                        {{ lineItem.inventory.product.name }}
+                    </p>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="store">
+                <mat-header-cell *matHeaderCellDef mat-sort-header
+                    >Store</mat-header-cell
+                >
+                <mat-cell *matCellDef="let lineItem">
+                    <p class="text-truncate">
+                        {{ lineItem.inventory.store.name }}
+                    </p>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="kegType">
+                <mat-header-cell *matHeaderCellDef mat-sort-header
+                    >Keg Type</mat-header-cell
+                >
+                <mat-cell *matCellDef="let lineItem">
+                    <p class="text-truncate"></p>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="size">
+                <mat-header-cell *matHeaderCellDef mat-sort-header
+                    >Size</mat-header-cell
+                >
+                <mat-cell *matCellDef="let lineItem">
+                    <p class="text-truncate">
+                        {{ lineItem.inventory.size.name }}
+                    </p>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="deliverFee">
+                <mat-header-cell *matHeaderCellDef mat-sort-header
+                    >Delivery Fee</mat-header-cell
+                >
+                <mat-cell *matCellDef="let lineItem">
+                    <p class="text-truncate">
+                        {{ lineItem.inventory.category.deliveryFee }}
+                    </p>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="depositeFee">
+                <mat-header-cell *matHeaderCellDef mat-sort-header
+                    >Deposite Fee</mat-header-cell
+                >
+                <mat-cell *matCellDef="let lineItem">
+                    <p class="text-truncate">
+                        {{ lineItem.inventory.product.depositFee }}
+                    </p>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="price">
+                <mat-header-cell *matHeaderCellDef mat-sort-header
+                    >Price</mat-header-cell
+                >
+                <mat-cell *matCellDef="let lineItem">
+                    <p class="text-truncate">
+                        {{ lineItem.inventory.product.price }}
+                    </p>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="quantity">
+                <mat-header-cell *matHeaderCellDef mat-sort-header
+                    >Quantity</mat-header-cell
+                >
+                <mat-cell *matCellDef="let lineItem">
+                    <p class="text-truncate">
+                        {{ lineItem.qty }}
+                    </p>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="total">
+                <mat-header-cell *matHeaderCellDef mat-sort-header
+                    >Total</mat-header-cell
+                >
+                <mat-cell *matCellDef="let lineItem">
+                    <p class="text-truncate">
+                        {{ lineItem.price }}
+                    </p>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row
+                *matHeaderRowDef="displayedColumns; sticky: true"
+            ></mat-header-row>
+
+            <mat-row
+                *matRowDef="let lineItem; columns: displayedColumns"
+                class="lineItem"
+                matRipple
+            >
+            </mat-row>
+        </mat-table>
+
+        <mat-paginator
+            #paginator
+            [length]="dataSource.filteredData.length"
+            [pageIndex]="0"
+            [pageSize]="10"
+            [pageSizeOptions]="[5, 10, 25, 100]"
+        >
+        </mat-paginator>
+    </div>
+</div>

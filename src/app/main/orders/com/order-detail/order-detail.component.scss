@@ -1,0 +1,24 @@
+@import "src/@fuse/scss/fuse";
+@import "src/sass/main";
+
+#orderDetails {
+    .order-header {
+        height: 200px;
+        width: 100%;
+        .section {
+            width: 50%;
+            margin-bottom: 16px;
+            display: inline-block;
+            text-align: left;
+            position: relative;
+            .label {
+                width: 30%;
+                display: inline-block;
+                text-align: left;
+            }
+        }
+        mat-label {
+            font-size: 1.5rem;
+        }
+    }
+}

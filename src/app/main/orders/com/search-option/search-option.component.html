@@ -1,0 +1,74 @@
+<div>
+    <form
+        name="optionForm"
+        [formGroup]="optionForm"
+        class="store-form"
+        fxLayout="row"
+        fxFlex
+        fxLayoutAlign="center center"
+    >
+        <mat-form-field>
+            <input
+                matInput
+                [matDatepicker]="startPicker"
+                placeholder="Start Date"
+                formControlName="beginDate"
+            />
+            <mat-datepicker-toggle
+                matSuffix
+                [for]="startPicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #startPicker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="ml-16">
+            <input
+                matInput
+                [matDatepicker]="endPicker"
+                placeholder="End Date"
+                formControlName="endDate"
+            />
+            <mat-datepicker-toggle
+                matSuffix
+                [for]="endPicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #endPicker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="ml-16">
+            <mat-label>Status</mat-label>
+            <mat-select placeholder="status" formControlName="status">
+                <mat-option
+                    *ngFor="let status of statues"
+                    [value]="status.value"
+                >
+                    {{ status.key }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div fxLayoutAlign="center center" class="ml-32" fxLayout="row">
+            <button
+                mat-raised-button
+                color="accent"
+                type="submit"
+                class="save-button"
+                (click)="submit()"
+                aria-label="UPDATE"
+            >
+                Search
+            </button>
+
+            <button
+                mat-raised-button
+                color="accent"
+                type="submit"
+                class="save-button ml-16"
+                (click)="submit()"
+                aria-label="UPDATE"
+            >
+                Clear
+            </button>
+        </div>
+    </form>
+</div>
