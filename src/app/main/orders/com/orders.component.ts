@@ -108,7 +108,6 @@ export class OrdersComponent implements OnInit {
             } else {
                 this.beginDate = params.beginDate;
                 this.endDate = params.endDate;
-                this.ordersService.getOrders();
             }
         });
     }
