@@ -5,6 +5,7 @@ export class Order extends SimpleOrder {
     customer: User;
     lineItems: LineItem[];
     deliveryAddress: Address;
+    deliveryFees: number;
 
     constructor(data: any = {}) {
         if (!data) {
@@ -19,5 +20,6 @@ export class Order extends SimpleOrder {
                 : null;
         this.lineItems = data.LineItems.map(lineItem => new LineItem(lineItem));
         this.deliveryAddress = new Address(data.deliveryAddress);
+        this.deliveryFees = data.deliveryFees;
     }
 }

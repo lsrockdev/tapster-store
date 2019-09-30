@@ -7,16 +7,20 @@ import {
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
-import { Order, Api, User, SimpleOrder } from "../../../model";
+import { Order, Api, User, SimpleOrder, LineItem } from "../../../model";
 import { BackendService } from "../../../services/backend.service";
 
 @Injectable()
 export class OrdersService implements Resolve<any> {
     orders: SimpleOrder[];
     onOrdersChanged: BehaviorSubject<any>;
+    onChooseOrderChanged: BehaviorSubject<any>;
+
+    lineItems: LineItem[] = [];
 
     constructor(private bs: BackendService) {
         this.onOrdersChanged = new BehaviorSubject({});
+        this.onChooseOrderChanged = new BehaviorSubject({});
     }
 
     resolve(
@@ -66,8 +70,10 @@ export class OrdersService implements Resolve<any> {
             map(res => {
                 console.log(res);
                 if (res) {
-                    console.log(new Order(res.order));
-                    return new Order(res.order);
+                    const order = new Order(res.order);
+                    this.lineItems = order.lineItems;
+                    this.onChooseOrderChanged.next(this.lineItems);
+                    return order;
                 }
                 return null;
             })

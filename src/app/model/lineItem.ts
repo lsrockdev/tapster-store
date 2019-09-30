@@ -11,5 +11,8 @@ export class LineItem {
             data = {};
         }
         this.inventory = new Inventory(data.Inventory);
+        this.id = data.id;
+        this.qty = data.qty;
+        this.price = data.price;
     }
 }
