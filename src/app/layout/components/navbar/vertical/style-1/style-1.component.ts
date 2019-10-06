@@ -142,22 +142,4 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy {
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
     }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Toggle sidebar opened status
-     */
-    toggleSidebarOpened(): void {
-        // this._fuseSidebarService.getSidebar('navbar').toggleOpen();
-    }
-
-    /**
-     * Toggle sidebar folded status
-     */
-    toggleSidebarFolded(): void {
-        // this._fuseSidebarService.getSidebar("navbar").toggleFold();
-    }
 }
