@@ -59,7 +59,7 @@ export class SignupComponent implements OnInit {
             // confirmPassword: ["", Validators.required],
             name: ["", Validators.required],
             uid: ["", Validators.required],
-            address: ["", Validators.required],
+            address1: ["", Validators.required],
             phone: ["", Validators.required],
             city: ["", Validators.required],
             zipCode: ["", Validators.required]
@@ -77,8 +77,20 @@ export class SignupComponent implements OnInit {
         e.preventDefault();
         if (this.registerForm.valid) {
             this.loading = true;
-            const data = this.registerForm.value;
-            delete data.address;
+            const formData = this.registerForm.value;
+            const data = {
+                email: formData.email,
+                password: formData.password,
+                phone: formData.phone,
+                uid: formData.uid,
+                name: formData.name,
+                address: {
+                    address1: formData.address1,
+                    city: formData.city,
+                    state: formData.state,
+                    zipCode: formData.zipCode
+                }
+            };
             this.authService
                 .signUp(data)
                 .then(

@@ -1,8 +1,20 @@
 @import "src/@fuse/scss/fuse";
 @import "src/sass/main";
 
-app-inventory {
+#inventories {
     .inventory-table {
         width: 100%;
+
+        .mat-column-category {
+            flex: 0 1 180px;
+        }
+
+        .mat-column-product {
+            flex: 0 1 180px;
+        }
+
+        .mat-column-buttons {
+            flex: 0 1 180px;
+        }
     }
 }
