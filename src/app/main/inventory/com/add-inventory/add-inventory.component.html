@@ -60,7 +60,6 @@
                 </mat-error>
             </mat-form-field>
 
-
             <mat-form-field appearance="outline">
                 <mat-label>Size</mat-label>
                 <mat-select placeholder="size" formControlName="size">
@@ -78,6 +77,19 @@
                 <input matInput name="price" formControlName="price" />
                 <mat-error>
                     Price is required
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Stock:</mat-label>
+                <input
+                    matInput
+                    type="number"
+                    name="quantity"
+                    formControlName="quantity"
+                />
+                <mat-error>
+                    Stock is required
                 </mat-error>
             </mat-form-field>
 

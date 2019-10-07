@@ -88,14 +88,16 @@ export class AddInventoryComponent implements OnInit {
                 id: [inventory.id],
                 product: [inventory.product],
                 size: [inventory.size.id],
-                price: [inventory.price]
+                price: [inventory.price],
+                quantity: [inventory.quantity]
             });
         }
         return this._formBuilder.group({
             id: null,
             product: ["", Validators.required],
             size: ["", Validators.required],
-            price: ["", Validators.required]
+            price: ["", Validators.required],
+            quantity: [null, Validators.required]
         });
     }
 
@@ -108,9 +110,9 @@ export class AddInventoryComponent implements OnInit {
             sizeId: formValue.size,
             price: formValue.price,
             categoryId: formValue.product.categoryId,
-            storeId: user.Store.id
+            storeId: user.Store.id,
+            quantity: formValue.quantity
         };
-        console.log(data);
         if (this.isEdit) {
             this.inventoryService
                 .updateInventory(data)

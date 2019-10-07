@@ -10,7 +10,7 @@ export class Inventory {
     category: Category;
     size: Size;
     store: Stores;
-
+    quantity: number;
     constructor(data: any = {}) {
         if (!data) {
             data = {};
@@ -21,5 +21,6 @@ export class Inventory {
         this.store = new Stores(data.Store);
         this.id = data.id;
         this.price = data.price;
+        this.quantity = data.quantity;
     }
 }

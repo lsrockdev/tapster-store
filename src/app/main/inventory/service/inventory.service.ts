@@ -11,6 +11,8 @@ import { BackendService } from "../../../services/backend.service";
 @Injectable()
 export class InventoryService implements Resolve<any> {
     inventories: Inventory[];
+    products: Product[];
+
     onInventoriesChanged: BehaviorSubject<any>;
 
     constructor(private bs: BackendService) {
@@ -22,9 +24,12 @@ export class InventoryService implements Resolve<any> {
         state: RouterStateSnapshot
     ): Observable<any> | Promise<any> | any {
         return new Promise((resolve, reject) => {
-            Promise.all([this.getInventories()]).then(() => {
-                resolve();
-            }, reject);
+            Promise.all([this.getInventories(), this.getActiveProducts()]).then(
+                () => {
+                    resolve();
+                },
+                reject
+            );
         });
     }
 
@@ -50,10 +55,8 @@ export class InventoryService implements Resolve<any> {
         return new Promise((resolve, reject) => {
             this.bs.get(Api.inventory.getActiveProducts).subscribe(
                 res => {
-                    const products = res.products.map(
-                        data => new Product(data)
-                    );
-                    resolve(products);
+                    this.products = res.products.map(data => new Product(data));
+                    resolve(this.products);
                 },
                 error => console.log(error)
             );
