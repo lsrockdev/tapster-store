@@ -121,24 +121,22 @@ export class InventoryComponent implements OnInit {
     }
 
     openAddInventoryDialog(inventory: Inventory, sizes: Size[] = null): void {
-        this.inventoryService.getActiveProducts().then(products => {
-            this.dialogRef = this._matDialog.open(AddInventoryComponent, {
-                panelClass: "",
-                data: {
-                    inventory,
-                    sizes,
-                    products
-                }
-            });
-            this.dialogRef.afterClosed().subscribe(response => {
-                if (!response) {
-                    return;
-                }
-                const actionType: string = response[0];
-                if (actionType) {
-                    this.refreshInventories();
-                }
-            });
+        this.dialogRef = this._matDialog.open(AddInventoryComponent, {
+            panelClass: "",
+            data: {
+                inventory,
+                sizes,
+                products: this.inventoryService.products
+            }
+        });
+        this.dialogRef.afterClosed().subscribe(response => {
+            if (!response) {
+                return;
+            }
+            const actionType: string = response[0];
+            if (actionType) {
+                this.refreshInventories();
+            }
         });
     }
 
