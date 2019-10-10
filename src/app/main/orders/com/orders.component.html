@@ -1,4 +1,7 @@
-<div id="sizes" class="main-content page-layout carded fullwidth inner-scroll">
+<div
+    id="app-orders"
+    class="main-content page-layout carded fullwidth inner-scroll"
+>
     <!-- TOP BACKGROUND -->
     <div class="top-bg accent"></div>
     <!-- / TOP BACKGROUND -->
@@ -26,11 +29,11 @@
             <!-- / APP TITLE -->
 
             <div class="search-option m-24" *ngIf="beginDate && endDate">
-                <app-search-option     
-                [beginDate]="beginDate"
-                [endDate]="endDate"
-                (event)="changeDateRange($event.data)"
-            ></app-search-option>
+                <app-search-option
+                    [beginDate]="beginDate"
+                    [endDate]="endDate"
+                    (event)="changeDateRange($event.data)"
+                ></app-search-option>
             </div>
         </div>
         <!-- / HEADER -->
@@ -38,7 +41,7 @@
         <!-- CONTENT CARD -->
         <div class="content-card">
             <mat-table
-                class="main-data-table size-table"
+                class="main-data-table orders-table"
                 #table
                 [dataSource]="dataSource"
                 matSort
@@ -131,7 +134,7 @@
                     >
                     <mat-cell *matCellDef="let order">
                         <p class="text-truncate">
-                            {{ order.total | currency: "USD" }}
+                            {{ order.total / 100 | currency: "USD" }}
                         </p>
                     </mat-cell>
                 </ng-container>
@@ -142,14 +145,14 @@
                     >
                     <mat-cell *matCellDef="let order">
                         <p class="text-truncate">
-                            {{ order.penalty | currency: "USD" }}
+                            {{ order.penalty / 100 | currency: "USD" }}
                         </p>
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="kegsDeliveredQty">
                     <mat-header-cell *matHeaderCellDef mat-sort-header
-                        >No. of Kegs Picked</mat-header-cell
+                        >Kegs</mat-header-cell
                     >
                     <mat-cell *matCellDef="let order">
                         <p class="text-truncate">
@@ -160,7 +163,7 @@
 
                 <ng-container matColumnDef="tapsDeliveredQty">
                     <mat-header-cell *matHeaderCellDef mat-sort-header
-                        >No. of Taps Picked</mat-header-cell
+                        >Taps</mat-header-cell
                     >
                     <mat-cell *matCellDef="let order">
                         <p class="text-truncate">

@@ -16,18 +16,15 @@ export class SearchOptionComponent implements OnInit {
     @Output() event = new EventEmitter<any>();
 
     statues = [
-        { key: "All", value: 0 },
-        { key: "New", value: 1 },
-        { key: "Order is Ready", value: 2 },
-        { key: "Schedule for Pick up", value: 3 },
-        { key: "Claim Deliver", value: 4 },
-        { key: "Claim PickUp", value: 5 },
-        { key: "Declaim", value: 6 },
-        { key: "Delivered", value: 7 },
-        { key: "Deliver Failed", value: 8 },
-        { key: "Pickup", value: 9 },
-        { key: "Pickup Failed", value: 10 },
-        { key: "Returned", value: 11 }
+        { key: "All", value: 9 },
+        { key: "New", value: 0 },
+        { key: "Claim Deliver", value: 1 },
+        { key: "Claim PickUp", value: 2 },
+        { key: "Delivered", value: 3 },
+        { key: "Pickup", value: 4 },
+        { key: "Deliver Failed", value: 5 },
+        { key: "Pickup Failed", value: 6 },
+        { key: "Returned", value: 7 }
     ];
 
     constructor(

@@ -1,8 +1,28 @@
 @import "src/@fuse/scss/fuse";
 @import "src/sass/main";
-.search-option {
-    width: 100%;
-    border-radius: 28px;
-    overflow: hidden;
-    // background: white;
+
+#app-orders {
+    .search-option {
+        width: 100%;
+        border-radius: 28px;
+        overflow: hidden;
+    }
+    .content-card {
+        .orders-table {
+            width: 100%;
+            .mat-column-id {
+                flex: 0 1 60px;
+            }
+            .mat-column-tapsDeliveredQty {
+                flex: 0 1 60px;
+            }
+            .mat-column-kegsDeliveredQty {
+                flex: 0 1 60px;
+            }
+
+            .mat-column-buttons {
+                flex: 0 1 130px;
+            }
+        }
+    }
 }
