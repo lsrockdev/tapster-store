@@ -122,7 +122,7 @@ export class OrdersComponent implements OnInit {
                 .toISOString()
                 .slice(0, 10),
             endDate: new Date().toISOString().slice(0, 10),
-            status: 0
+            status: 9
         });
     }
 

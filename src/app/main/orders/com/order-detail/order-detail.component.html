@@ -61,7 +61,7 @@
 
             <div class="section">
                 <mat-label class="label">($) Total:</mat-label>
-                <mat-label>{{ o.total | currency: "USD" }}</mat-label>
+                <mat-label>{{ o.total / 100 | currency: "USD" }}</mat-label>
             </div>
 
             <div class="section">
@@ -142,7 +142,10 @@
                 >
                 <mat-cell *matCellDef="let lineItem">
                     <p class="text-truncate">
-                        {{ lineItem.inventory.product.depositFee }}
+                        {{
+                            lineItem.inventory.product.depositFee / 100
+                                | currency: "USD"
+                        }}
                     </p>
                 </mat-cell>
             </ng-container>
@@ -153,7 +156,10 @@
                 >
                 <mat-cell *matCellDef="let lineItem">
                     <p class="text-truncate">
-                        {{ lineItem.inventory.product.price }}
+                        {{
+                            lineItem.inventory.product.price / 100
+                                | currency: "USD"
+                        }}
                     </p>
                 </mat-cell>
             </ng-container>
@@ -175,7 +181,7 @@
                 >
                 <mat-cell *matCellDef="let lineItem">
                     <p class="text-truncate">
-                        {{ lineItem.price }}
+                        {{ lineItem.price / 100 | currency: "USD" }}
                     </p>
                 </mat-cell>
             </ng-container>

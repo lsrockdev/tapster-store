@@ -1,20 +1,17 @@
 import { User } from "../../model";
 
 export enum OrderStatus {
-    AwaitingPayment = 0,
-    Paid = 1,
+    Paid = 0,
 
-    Keg_Ready = 2,
-    ScheduledPickup = 3,
+    ClaimDeliver = 1,
+    ClaimPickUp = 2,
 
-    ClaimDeliver = 4,
-    ClaimPickUp = 5,
-    Declaim = 6,
-    Delivered = 7,
-    DeliverFailed = 8,
-    Pickup = 9,
-    PickupFailed = 10,
-    Returned = 11
+    Delivered = 3,
+    Pickup = 4,
+
+    DeliverFailed = 5,
+    PickupFailed = 6,
+    Returned = 7
 }
 
 export class SimpleOrder {
@@ -63,20 +60,12 @@ export class SimpleOrder {
 
     get statusString(): string {
         switch (this.status) {
-            case OrderStatus.AwaitingPayment:
-                return "New";
             case OrderStatus.Paid:
                 return "New";
-            case OrderStatus.Keg_Ready:
-                return "Order is ready";
-            case OrderStatus.ScheduledPickup:
-                return "Schedule for pickup";
             case OrderStatus.ClaimDeliver:
-                return "Assigned drive for deliver";
+                return "Claim deliver";
             case OrderStatus.ClaimPickUp:
-                return "Drive assigned drive to pick up";
-            case OrderStatus.Declaim:
-                return "Declaim";
+                return "Claim pick up";
             case OrderStatus.Delivered:
                 return "Delivered";
             case OrderStatus.DeliverFailed:
