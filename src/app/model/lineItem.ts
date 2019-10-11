@@ -5,6 +5,7 @@ export class LineItem {
     qty: number;
     price: number;
     inventory: Inventory;
+    extendedPrice: number;
 
     constructor(data: any = {}) {
         if (!data) {
@@ -14,5 +15,6 @@ export class LineItem {
         this.id = data.id;
         this.qty = data.qty;
         this.price = data.price;
+        this.extendedPrice = data.extendedPrice;
     }
 }
