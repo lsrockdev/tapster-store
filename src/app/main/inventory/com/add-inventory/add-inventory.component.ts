@@ -88,7 +88,7 @@ export class AddInventoryComponent implements OnInit {
                 id: [inventory.id],
                 product: [inventory.product],
                 size: [inventory.size.id],
-                price: [inventory.price],
+                price: [inventory.price / 100],
                 quantity: [inventory.quantity]
             });
         }
@@ -108,7 +108,7 @@ export class AddInventoryComponent implements OnInit {
             id: formValue.id,
             productId: formValue.product.id,
             sizeId: formValue.size,
-            price: formValue.price,
+            price: formValue.price * 100,
             categoryId: formValue.product.categoryId,
             storeId: user.Store.id,
             quantity: formValue.quantity
