@@ -49,7 +49,12 @@ export class OrdersService implements Resolve<any> {
             const user = User.getStoredUser();
             this.bs
                 .get(Api.orders.getAll, {
-                    ...params,
+                    beginDate:
+                        new Date(params.beginDate).getTime() +
+                        new Date().getTimezoneOffset() * 60 * 1000,
+                    endDate:
+                        new Date(params.endDate).getTime() +
+                        new Date().getTimezoneOffset() * 60 * 1000 * 24,
                     storeId: user.Store.id
                 })
                 .subscribe(
