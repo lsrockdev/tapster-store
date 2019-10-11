@@ -90,7 +90,7 @@
                     >
                     <mat-cell *matCellDef="let order">
                         <p class="text-truncate">
-                            {{ order.createdAt | date: "medium" }}
+                            {{ order.createdAt | date: "short" }}
                         </p>
                     </mat-cell>
                 </ng-container>
@@ -101,7 +101,7 @@
                     >
                     <mat-cell *matCellDef="let order">
                         <p class="text-truncate">
-                            {{ order.deliveredAt | date: "medium" }}
+                            {{ order.deliveredAt | date: "short" }}
                         </p>
                     </mat-cell>
                 </ng-container>
@@ -112,7 +112,7 @@
                     >
                     <mat-cell *matCellDef="let order">
                         <p class="text-truncate">
-                            {{ order.pickupAt | date: "medium" }}
+                            {{ order.pickupAt | date: "short" }}
                         </p>
                     </mat-cell>
                 </ng-container>
@@ -123,7 +123,7 @@
                     >
                     <mat-cell *matCellDef="let order">
                         <p class="text-truncate">
-                            {{ order.returnedAt | date: "medium" }}
+                            {{ order.returnedAt | date: "short" }}
                         </p>
                     </mat-cell>
                 </ng-container>

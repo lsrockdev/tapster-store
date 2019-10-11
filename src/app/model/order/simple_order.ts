@@ -69,7 +69,7 @@ export class SimpleOrder {
             case OrderStatus.Delivered:
                 return "Delivered";
             case OrderStatus.DeliverFailed:
-                return "Deliver failed";
+                return "Delivery Failed";
             case OrderStatus.Pickup:
                 return "Pickup";
             case OrderStatus.PickupFailed:

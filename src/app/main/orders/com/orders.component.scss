@@ -11,13 +11,54 @@
         .orders-table {
             width: 100%;
             .mat-column-id {
-                flex: 0 1 60px;
+                flex: 0 1 100px;
             }
+
+            .mat-column-name {
+                flex: 0 1 130px;
+            }
+
+            .mat-column-phone {
+                flex: 0 1 130px;
+            }
+
+            .mat-column-status {
+                flex: 0 1 130px;
+            }
+
+            // .mat-column-deliveredAt {
+            //     flex: 0 1 125px;
+            // }
+
+            // .mat-column-createdAt {
+            //     flex: 0 1 180px;
+            // }
+
+            // .mat-column-deliveredAt {
+            //     flex: 0 1 125px;
+            // }
+
+            // .mat-column-pickupAt {
+            //     flex: 0 1 125px;
+            // }
+
+            // .mat-column-returnedAt {
+            //     flex: 0 1 125px;
+            // }
+
+            .mat-column-total {
+                flex: 0 1 80px;
+            }
+
+            .mat-column-penalty {
+                flex: 0 1 80px;
+            }
+
             .mat-column-tapsDeliveredQty {
-                flex: 0 1 60px;
+                flex: 0 1 80px;
             }
             .mat-column-kegsDeliveredQty {
-                flex: 0 1 60px;
+                flex: 0 1 80px;
             }
 
             .mat-column-buttons {
