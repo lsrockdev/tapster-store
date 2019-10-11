@@ -131,7 +131,10 @@
                 >
                 <mat-cell *matCellDef="let lineItem">
                     <p class="text-truncate">
-                        {{ lineItem.inventory.category.deliveryFee }}
+                        {{
+                            lineItem.inventory.category.deliveryFee / 100
+                                | currency: "USD"
+                        }}
                     </p>
                 </mat-cell>
             </ng-container>
@@ -156,10 +159,7 @@
                 >
                 <mat-cell *matCellDef="let lineItem">
                     <p class="text-truncate">
-                        {{
-                            lineItem.inventory.product.price / 100
-                                | currency: "USD"
-                        }}
+                        {{ lineItem.inventory.price / 100 | currency: "USD" }}
                     </p>
                 </mat-cell>
             </ng-container>
@@ -181,7 +181,7 @@
                 >
                 <mat-cell *matCellDef="let lineItem">
                     <p class="text-truncate">
-                        {{ lineItem.price / 100 | currency: "USD" }}
+                        {{ lineItem.extendedPrice / 100 | currency: "USD" }}
                     </p>
                 </mat-cell>
             </ng-container>
