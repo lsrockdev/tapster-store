@@ -103,7 +103,7 @@ export class AddInventoryComponent implements OnInit {
 
     public submit(e: Event): void {
         const formValue = this.inventoryForm.value;
-        const user = User.getStoredUser();
+        const user = User.getStoredUser() || {};
         const data = {
             id: formValue.id,
             productId: formValue.product.id,

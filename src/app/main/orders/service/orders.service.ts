@@ -46,7 +46,7 @@ export class OrdersService implements Resolve<any> {
 
     getOrders(params: any): Promise<any> {
         return new Promise((resolve, reject) => {
-            const user = User.getStoredUser();
+            const user = User.getStoredUser() || {};
             this.bs
                 .get(Api.orders.getAll, {
                     beginDate:

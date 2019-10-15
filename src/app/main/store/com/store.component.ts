@@ -12,7 +12,7 @@ export class StoreComponent implements OnInit {
     store: Observable<Stores>;
 
     constructor(private storesService: StoresService) {
-        const user = User.getStoredUser();
+        const user = User.getStoredUser() || {};
         this.store = this.storesService.getStore(user.Store.id);
     }
 
