@@ -118,9 +118,13 @@ export class AddInventoryComponent implements OnInit {
                 .updateInventory(data)
                 .then(res => this.matDialogRef.close(["edit"]));
         } else {
-            this.inventoryService
-                .addInventory(data)
-                .then(res => this.matDialogRef.close(["add"]));
+            this.inventoryService.addInventory(data).then((res: any) => {
+                if (!res.StatusCode) {
+                    this.errorMessage = res.message;
+                    return;
+                }
+                this.matDialogRef.close(["add"]);
+            });
         }
     }
 }
