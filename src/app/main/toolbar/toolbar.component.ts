@@ -22,7 +22,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     rightNavbar: boolean;
     hiddenNavbar: boolean;
     navigation: any;
-    user: User;
+    user: any;
     // Private
 
     private _unsubscribeAll: Subject<any>;
