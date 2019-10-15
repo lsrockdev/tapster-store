@@ -36,7 +36,16 @@ export class User {
     }
 
     get name(): string {
-        return this.firstName + " " + this.lastName;
+        if (!!this.firstName && !!this.lastName) {
+            return this.firstName + " " + this.lastName;
+        }
+        if (!!this.firstName) {
+            return this.firstName;
+        }
+        if (!!this.lastName) {
+            return this.lastName;
+        }
+        return "";
     }
 
     public static storeToken(token: string) {

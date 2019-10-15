@@ -12,6 +12,9 @@
             fxLayout="row"
             fxLayoutAlign="start center"
         >
+            <div>
+                {{ user.Store.name }}
+            </div>
             <button mat-button (click)="logout($event)">
                 <mat-icon>exit_to_app</mat-icon>
                 <span>Logout</span>
