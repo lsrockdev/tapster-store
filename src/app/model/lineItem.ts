@@ -6,6 +6,8 @@ export class LineItem {
     price: number;
     inventory: Inventory;
     extendedPrice: number;
+    deliveryfee: number;
+    depositfee: number;
 
     constructor(data: any = {}) {
         if (!data) {
@@ -16,5 +18,11 @@ export class LineItem {
         this.qty = data.qty;
         this.price = data.price;
         this.extendedPrice = data.extendedPrice;
+        this.deliveryfee = data.deliveryfee || 0;
+        this.depositfee = data.depositfee || 0;
+    }
+
+    get total() {
+        return this.extendedPrice + this.deliveryfee + this.depositfee;
     }
 }
