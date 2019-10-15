@@ -15,12 +15,12 @@ export class User {
     isFbUser: boolean;
     dob: Date;
     store: Stores;
-
     address: Address;
 
     constructor(data: any = {}) {
         if (!data) {
             data = {};
+            return;
         }
         this.id = data.id;
         this.email = data.email;
