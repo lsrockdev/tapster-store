@@ -22,8 +22,9 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     rightNavbar: boolean;
     hiddenNavbar: boolean;
     navigation: any;
-    // user: User;
+    user: User;
     // Private
+
     private _unsubscribeAll: Subject<any>;
 
     /**
@@ -41,6 +42,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     ) {
         this.navigation = navigation;
         this._unsubscribeAll = new Subject();
+        this.user = User.getStoredUser();
     }
 
     // -----------------------------------------------------------------------------------------------------
