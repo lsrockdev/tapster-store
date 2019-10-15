@@ -58,7 +58,7 @@ export class UpdateStoreComponent implements OnInit {
             description: [this.store.description],
             address1: [this.store.address.address1, Validators.required],
             city: [this.store.address.city, Validators.required],
-            state: [this.store.address.state, Validators.required],
+            state: [this.store.address.state],
             zipCode: [this.store.address.zipCode, Validators.required],
             numberOfDays: [this.store.numberOfDays]
         });

@@ -9,7 +9,7 @@ export class Stores {
         "description",
         "stripeToken"
     ];
-    private static numKeys = ["id", "taxPercentage", "userId"];
+    private static numKeys = ["id", "taxPercentage", "userId", "numberOfDays"];
 
     id: number;
     name: string;
