@@ -86,9 +86,9 @@ export class AddInventoryComponent implements OnInit {
         if (inventory) {
             return this._formBuilder.group({
                 id: [inventory.id],
-                product: [inventory.product],
-                size: [inventory.size.id],
-                price: [inventory.price / 100],
+                product: [inventory.product, Validators.required],
+                size: [inventory.size.id, Validators.required],
+                price: [inventory.price / 100, Validators.required],
                 quantity: [inventory.quantity]
             });
         }
@@ -97,7 +97,7 @@ export class AddInventoryComponent implements OnInit {
             product: ["", Validators.required],
             size: ["", Validators.required],
             price: ["", Validators.required],
-            quantity: [null, Validators.required]
+            quantity: [null]
         });
     }
 
