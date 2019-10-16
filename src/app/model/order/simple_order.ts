@@ -33,6 +33,7 @@ export class SimpleOrder {
     deliveredAt: Date;
     returnedAt: Date;
     createdAt: Date;
+    pickupAt: Date;
 
     kegsDeliveredQty: number;
     tapsDeliveredQty: number;
@@ -49,6 +50,7 @@ export class SimpleOrder {
         this.deliveredAt = data.deliveredAt ? new Date(data.deliveredAt) : null;
         this.returnedAt = data.returnedAt ? new Date(data.returnedAt) : null;
         this.createdAt = data.createdAt ? new Date(data.createdAt) : null;
+        this.pickupAt = data.pickupAt ? new Date(data.pickupAt) : null;
         this.customer = data.Customer ? new User(data.Customer) : null;
     }
 
