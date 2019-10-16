@@ -16,7 +16,7 @@ export class Inventory {
             data = {};
         }
         this.product = new Product(data.Product);
-        this.category = new Category(data.Category);
+        this.category = new Category(data.Product ? data.Product.Category : {});
         this.size = new Size(data.Size);
         this.store = new Stores(data.Store);
         this.id = data.id;
