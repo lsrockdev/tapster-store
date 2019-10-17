@@ -40,7 +40,6 @@ export class InventoryComponent implements OnInit {
         "keg",
         "Tap",
         "deliveryFee",
-        "depositeFee",
         "price",
         "buttons"
     ];
@@ -262,12 +261,6 @@ export class InventoryDataSource extends DataSource<any> {
                     [propertyA, propertyB] = [
                         a.category.deliveryFee,
                         b.category.deliveryFee
-                    ];
-                    break;
-                case "depositeFee":
-                    [propertyA, propertyB] = [
-                        a.product.depositeFee,
-                        b.product.depositeFee
                     ];
                     break;
                 case "price":

@@ -101,7 +101,7 @@
                     >
                     <mat-cell *matCellDef="let order">
                         <p class="text-truncate">
-                            {{ order.deliveredAt | date: "short" }}
+                            {{ order.deliveryDate | date: "short" }}
                         </p>
                     </mat-cell>
                 </ng-container>
@@ -135,17 +135,6 @@
                     <mat-cell *matCellDef="let order">
                         <p class="text-truncate">
                             {{ order.total / 100 | currency: "USD" }}
-                        </p>
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="penalty">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header
-                        >Penalty</mat-header-cell
-                    >
-                    <mat-cell *matCellDef="let order">
-                        <p class="text-truncate">
-                            {{ order.penalty / 100 | currency: "USD" }}
                         </p>
                     </mat-cell>
                 </ng-container>

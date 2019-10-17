@@ -44,6 +44,7 @@ export { Order } from "./order/order";
 
 export { Inventory } from "./inventory";
 export { LineItem } from "./lineItem";
+export { Slot } from "./slot";
 
 export { TimeUtil } from "./util/time.util";
 

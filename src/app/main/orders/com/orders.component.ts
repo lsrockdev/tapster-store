@@ -46,7 +46,6 @@ export class OrdersComponent implements OnInit {
         "pickupAt",
         "returnedAt",
         "total",
-        "penalty",
         "kegsDeliveredQty",
         "tapsDeliveredQty",
         "buttons"

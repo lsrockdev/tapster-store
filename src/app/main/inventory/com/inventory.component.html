@@ -135,20 +135,6 @@
                     </mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="depositeFee">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header
-                        >($) Deposite Fee</mat-header-cell
-                    >
-                    <mat-cell *matCellDef="let inventory">
-                        <p class="text-truncate">
-                            {{
-                                inventory.product.depositeFee / 100
-                                    | currency: "USD"
-                            }}
-                        </p>
-                    </mat-cell>
-                </ng-container>
-
                 <ng-container matColumnDef="price">
                     <mat-header-cell *matHeaderCellDef mat-sort-header
                         >($) Price</mat-header-cell

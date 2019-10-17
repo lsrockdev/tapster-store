@@ -1,4 +1,4 @@
-import { User } from "../../model";
+import { User, Slot } from "../../model";
 
 export enum OrderStatus {
     Paid = 0,
@@ -41,6 +41,7 @@ export class SimpleOrder {
     tapsReturnedQty: number;
 
     customer: User;
+    slot: Slot;
 
     constructor(data: any = {}) {
         if (!data) {
@@ -52,6 +53,7 @@ export class SimpleOrder {
         this.createdAt = data.createdAt ? new Date(data.createdAt) : null;
         this.pickupAt = data.pickupAt ? new Date(data.pickupAt) : null;
         this.customer = data.Customer ? new User(data.Customer) : null;
+        this.slot = new Slot(data.Slot);
     }
 
     get customerName(): string {
@@ -80,5 +82,9 @@ export class SimpleOrder {
                 return "Returned";
         }
         return "";
+    }
+
+    get deliveryDate(): Date {
+        return this.deliveredAt ? this.deliveredAt : this.slot.start;
     }
 }
