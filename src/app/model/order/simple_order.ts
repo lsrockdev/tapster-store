@@ -19,6 +19,7 @@ export class SimpleOrder {
         "id",
         "status",
         "total",
+        "tip",
         "penalty",
         "kegsDeliveredQty",
         "tapsDeliveredQty",
@@ -29,6 +30,7 @@ export class SimpleOrder {
     status: number;
     total: number;
     penalty: number;
+    tip: number;
 
     deliveredAt: Date;
     returnedAt: Date;
