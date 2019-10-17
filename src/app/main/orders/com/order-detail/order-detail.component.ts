@@ -32,7 +32,7 @@ export class OrderDetailComponent implements OnInit {
     displayedColumns = [
         "product",
         "store",
-        "kegType",
+        // "kegType",
         "size",
         "deliverFee",
         "price",

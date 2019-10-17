@@ -46,7 +46,7 @@
 
             <div class="section">
                 <mat-label class="label">Delivery Date:</mat-label>
-                <mat-label>{{ o.deliveryDate | date: "medium" }}</mat-label>
+                <mat-label>{{ o.deliveredAt | date: "medium" }}</mat-label>
             </div>
 
             <div class="section">
@@ -105,14 +105,14 @@
                 </mat-cell>
             </ng-container>
 
-            <ng-container matColumnDef="kegType">
+            <!-- <ng-container matColumnDef="kegType">
                 <mat-header-cell *matHeaderCellDef mat-sort-header
                     >Keg Type</mat-header-cell
                 >
                 <mat-cell *matCellDef="let lineItem">
                     <p class="text-truncate"></p>
                 </mat-cell>
-            </ng-container>
+            </ng-container> -->
 
             <ng-container matColumnDef="size">
                 <mat-header-cell *matHeaderCellDef mat-sort-header
@@ -156,7 +156,7 @@
                 >
                 <mat-cell *matCellDef="let lineItem">
                     <p class="text-truncate">
-                        {{ lineItem.inventory.price / 100 | currency: "USD" }}
+                        {{ lineItem.price / 100 | currency: "USD" }}
                     </p>
                 </mat-cell>
             </ng-container>

@@ -37,8 +37,8 @@ export class InventoryComponent implements OnInit {
         "category",
         "size",
         "product",
-        "keg",
-        "Tap",
+        // "keg",
+        // "Tap",
         "deliveryFee",
         "price",
         "buttons"
