@@ -3,22 +3,26 @@
 
 #orderDetails {
     .order-header {
-        height: 200px;
         width: 100%;
-        .section {
-            width: 50%;
-            margin-bottom: 16px;
-            display: inline-block;
-            text-align: left;
+        display: flex;
+        .section-content {
+            width: 33%;
             position: relative;
-            .label {
-                width: 30%;
-                display: inline-block;
+            display: inline-block;
+
+            .section {
+                width: 100%;
+                margin-bottom: 16px;
                 text-align: left;
+                .label {
+                    width: 30%;
+                    display: inline-block;
+                    text-align: left;
+                }
             }
-        }
-        mat-label {
-            font-size: 1.5rem;
+            mat-label {
+                font-size: 1.5rem;
+            }
         }
     }
     .order-product {

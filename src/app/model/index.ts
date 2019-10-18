@@ -41,6 +41,7 @@ export { Setting } from "./setting";
 export { CustomValidators } from "./util/custom.validators";
 export { SimpleOrder } from "./order/simple_order";
 export { Order } from "./order/order";
+export { Gift } from "./order/gift";
 
 export { Inventory } from "./inventory";
 export { LineItem } from "./lineItem";

@@ -1,4 +1,4 @@
-import { SimpleOrder, User, LineItem, Address } from "../../model";
+import { SimpleOrder, User, LineItem, Address, Gift } from "../../model";
 
 export class Order extends SimpleOrder {
     driver: User;
@@ -6,6 +6,8 @@ export class Order extends SimpleOrder {
     lineItems: LineItem[];
     deliveryAddress: Address;
     deliveryFees: number;
+    gift: Gift;
+    instructions: string;
 
     constructor(data: any = {}) {
         if (!data) {
@@ -21,5 +23,7 @@ export class Order extends SimpleOrder {
         this.lineItems = data.LineItems.map(lineItem => new LineItem(lineItem));
         this.deliveryAddress = new Address(data.deliveryAddress);
         this.deliveryFees = data.deliveryFees;
+        this.gift = new Gift(data.gift);
+        this.instructions = data.instructions;
     }
 }
