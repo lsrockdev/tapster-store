@@ -87,6 +87,10 @@ export class SimpleOrder {
     }
 
     get deliveryDate(): Date {
-        return this.deliveredAt ? this.deliveredAt : this.slot.start;
+        return this.deliveredAt;
+    }
+
+    get scheduledDate(): Date {
+        return this.slot.start;
     }
 }

@@ -43,6 +43,15 @@
                     <mat-label class="label">Customer Email:</mat-label>
                     <mat-label>{{ o.customer.email }}</mat-label>
                 </div>
+
+                <div class="section">
+                    <mat-label class="label"
+                        >Scheduled delivery date & time:</mat-label
+                    >
+                    <mat-label>{{
+                        o.scheduledDate | date: "medium"
+                    }}</mat-label>
+                </div>
             </div>
 
             <div class="section-content">

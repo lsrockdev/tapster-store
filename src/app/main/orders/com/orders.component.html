@@ -95,6 +95,17 @@
                     </mat-cell>
                 </ng-container>
 
+                <ng-container matColumnDef="scheduled">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                        >Scheduled delivery date & time</mat-header-cell
+                    >
+                    <mat-cell *matCellDef="let order">
+                        <p class="text-truncate">
+                            {{ order.scheduledDate | date: "short" }}
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
                 <ng-container matColumnDef="deliveredAt">
                     <mat-header-cell *matHeaderCellDef mat-sort-header
                         >Delivery Date</mat-header-cell

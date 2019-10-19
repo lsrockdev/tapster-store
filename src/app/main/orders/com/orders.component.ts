@@ -42,6 +42,7 @@ export class OrdersComponent implements OnInit {
         "phone",
         "status",
         "createdAt",
+        "scheduled",
         "deliveredAt",
         "pickupAt",
         "returnedAt",
